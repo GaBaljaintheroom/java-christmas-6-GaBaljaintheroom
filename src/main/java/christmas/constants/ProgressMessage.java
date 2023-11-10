@@ -6,7 +6,7 @@ public enum ProgressMessage {
 
     private final String message;
 
-    ProgressMessage(String message) {
+    ProgressMessage(final String message) {
         this.message = message;
     }
 

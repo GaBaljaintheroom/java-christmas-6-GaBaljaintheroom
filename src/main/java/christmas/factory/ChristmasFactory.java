@@ -5,6 +5,7 @@ import christmas.io.InputManager;
 import christmas.io.InputMapper;
 import christmas.io.InputView;
 import christmas.io.OutputView;
+import christmas.service.ChristmasService;
 
 public enum ChristmasFactory {
     INSTANCE;
@@ -12,7 +13,7 @@ public enum ChristmasFactory {
     private final ChristmasController christmasController;
 
     ChristmasFactory() {
-        this.christmasController = new ChristmasController(inputManger(), outputView());
+        this.christmasController = new ChristmasController(inputManger(), outputView(), christmasService());
     }
 
     public ChristmasController christmasController() {
@@ -33,5 +34,9 @@ public enum ChristmasFactory {
 
     private OutputView outputView() {
         return new OutputView();
+    }
+
+    private ChristmasService christmasService() {
+        return null;
     }
 }

@@ -3,7 +3,7 @@ package christmas.io;
 import christmas.constants.ProgressMessage;
 
 public class OutputView {
-    public void printErrorMessage(String error) {
+    public void printErrorMessage(final String error) {
         System.out.println(error);
     }
 

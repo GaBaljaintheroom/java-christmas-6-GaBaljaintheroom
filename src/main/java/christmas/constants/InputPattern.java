@@ -7,7 +7,7 @@ public enum InputPattern {
 
     private final Pattern pattern;
 
-    InputPattern(Pattern pattern) {
+    InputPattern(final Pattern pattern) {
         this.pattern = pattern;
     }
 
