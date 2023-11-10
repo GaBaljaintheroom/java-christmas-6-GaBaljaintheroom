@@ -26,7 +26,7 @@ class InputValidatorTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "11", "111"})
     @DisplayName("정상적으로 숫자를 입력한다.")
-    void When_Then_Correct(String visitDate) {
+    void When_InputCorrect_Then_NotThrowException(String visitDate) {
         assertThatCode(() -> inputValidator.validateNumericDate(visitDate))
                 .doesNotThrowAnyException();
     }
