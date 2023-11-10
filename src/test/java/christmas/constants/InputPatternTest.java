@@ -28,4 +28,25 @@ class InputPatternTest {
         //then
         assertFalse(actual);
     }
+
+    @Test
+    @DisplayName("주문 패턴이 아니라면 true를 반환한다.")
+    void When_IsNotOrderPattern_Then_ReturnTrue() {
+        //when
+        boolean actual = InputPattern.isNotOrderPattern("시저샐러드/0");
+
+        //then
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("주문 패턴이 맞으면 false를 반환한다.")
+    void When_IsOrderPattern_Then_ReturnFalse() {
+        //when
+        boolean actual = InputPattern.isNotOrderPattern("시저샐러드-1");
+
+        //then
+        assertFalse(actual);
+
+    }
 }
