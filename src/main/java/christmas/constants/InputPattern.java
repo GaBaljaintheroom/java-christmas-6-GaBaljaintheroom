@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public enum InputPattern {
     NUMERIC_PATTERN(Pattern.compile("^\\d*$")),
-    ORDER_PATTERN(Pattern.compile("([가-힣a-zA-Z]+)-([1-9])"));
+    ORDER_PATTERN(Pattern.compile("([가-힣a-zA-Z]+)-([1-9]+)"));
 
     private final Pattern pattern;
 
