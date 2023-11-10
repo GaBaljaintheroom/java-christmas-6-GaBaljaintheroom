@@ -11,7 +11,7 @@ public enum InputPattern {
         this.pattern = pattern;
     }
 
-    public static boolean isNotNumeric(String visitDate) {
+    public static boolean isNotNumeric(final String visitDate) {
         Pattern pattern = NUMERIC_PATTERN.pattern;
         return !pattern.matcher(visitDate).matches();
     }
