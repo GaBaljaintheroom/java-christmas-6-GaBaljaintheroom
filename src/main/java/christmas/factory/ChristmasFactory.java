@@ -6,6 +6,7 @@ import christmas.io.InputMapper;
 import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.service.ChristmasService;
+import christmas.validator.InputValidator;
 
 public enum ChristmasFactory {
     INSTANCE;
@@ -25,7 +26,11 @@ public enum ChristmasFactory {
     }
 
     private InputView inputView() {
-        return new InputView();
+        return new InputView(inputValidator());
+    }
+
+    private InputValidator inputValidator() {
+        return new InputValidator();
     }
 
     private InputMapper inputMapper() {
