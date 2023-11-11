@@ -38,11 +38,15 @@ public enum MenuBoard {
     }
 
     public static void validateExistMenu(List<Menu> menus) {
-        if (menus.stream()
-                .noneMatch(menu -> Stream.of(MenuBoard.values())
-                        .anyMatch(menuBoard -> menuBoard.menus.isContainMenuBoard(menu)))) {
+        if (isNotExistOrder(menus)) {
             throw new InvalidOrderException();
         }
     }
 
+    private static boolean isNotExistOrder(List<Menu> menus) {
+        return !menus.stream()
+                .map(Menu::getMenuName)
+                .allMatch(name -> Stream.of(MenuBoard.values())
+                        .anyMatch(menuBoard -> menuBoard.menus.isContainMenuName(name)));
+    }
 }
