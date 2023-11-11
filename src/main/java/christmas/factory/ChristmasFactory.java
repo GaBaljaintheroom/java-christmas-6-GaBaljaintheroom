@@ -5,6 +5,7 @@ import christmas.io.InputManager;
 import christmas.io.InputMapper;
 import christmas.io.InputView;
 import christmas.io.OutputView;
+import christmas.repository.ChristmasRepository;
 import christmas.service.ChristmasService;
 import christmas.validator.InputValidator;
 
@@ -42,6 +43,10 @@ public enum ChristmasFactory {
     }
 
     private ChristmasService christmasService() {
-        return null;
+        return new ChristmasService(christmasRepository());
+    }
+
+    private ChristmasRepository christmasRepository() {
+        return new ChristmasRepository();
     }
 }
