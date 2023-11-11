@@ -45,6 +45,7 @@ class InputValidatorTest {
 
     @ParameterizedTest
     @MethodSource("validOrderSources")
+    @DisplayName("정상적으로 주문을 한다.")
     void When_ValidOrder_Then_NotThrowException(String order) {
         assertThatCode(() -> inputValidator.validateOrderPattern(order))
                 .doesNotThrowAnyException();

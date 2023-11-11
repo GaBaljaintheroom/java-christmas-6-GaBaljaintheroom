@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,4 +60,12 @@ class MenusTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errorTage);
     }
+
+    @Test
+    @DisplayName("정상적인 메뉴를 저장한다.")
+    void When_InputNormalMenu_Then_NotThrowException() {
+        assertThatCode(() -> Menus.from(normalMenuSources()))
+                .doesNotThrowAnyException();
+    }
+
 }
