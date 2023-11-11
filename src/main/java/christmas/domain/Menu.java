@@ -1,34 +1,37 @@
 package christmas.domain;
 
-import java.util.Objects;
-
 public class Menu {
+
+    private static final Integer INIT_VALUE = 0;
     private final Name menuName;
     private final Price menuPrice;
+    private final Amount menuAmount;
 
     private Menu(final Name name, final Price price) {
         this.menuName = name;
         this.menuPrice = price;
+        this.menuAmount = Amount.from(INIT_VALUE);
+    }
+
+    private Menu(final Name name, final Amount amount){
+        this.menuName = name;
+        this.menuAmount = amount;
+        this.menuPrice = Price.from(INIT_VALUE);
     }
 
     public static Menu of(final Name name, final Price price) {
         return new Menu(name, price);
     }
 
+    public static Menu of(final Name name, final Amount amount) {
+        return new Menu(name, amount);
+    }
+
     public Name getMenuName() {
         return menuName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Menu menu = (Menu) o;
-        return menuName.equals(menu.menuName) && menuPrice.equals(menu.menuPrice);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(menuName, menuPrice);
+    public Integer getMenuAmount() {
+        return menuAmount.getMenuAmount();
     }
 }
