@@ -34,7 +34,7 @@ public class InputMapper {
     private Menu toMenu(final String order) {
         String[] split = order.split(DIVISION_MINUS);
         Name name = Name.from(split[FIRST_ELEMENT]);
-        Price price = Price.from(Integer.parseInt(split[SECOND_ELEMENT]));
-        return Menu.of(name, price);
+        Amount amount = Amount.from(Integer.parseInt(split[SECOND_ELEMENT]));
+        return Menu.of(name, amount);
     }
 }
