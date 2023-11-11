@@ -56,6 +56,15 @@ public class Menus {
                 .anyMatch(menuName -> menuName.equals(name));
     }
 
+    public Integer getPriceValueByMenuName(Menu orderMenu) {
+        Name menuName = orderMenu.getMenuName();
+        return values.stream()
+                .filter(m -> m.isEqualName(menuName))
+                .findFirst().stream()
+                .mapToInt(m -> m.getPriceValue() * orderMenu.getMenuAmountValue())
+                .sum();
+    }
+
     public List<Menu> getValues() {
         return List.copyOf(values);
     }
