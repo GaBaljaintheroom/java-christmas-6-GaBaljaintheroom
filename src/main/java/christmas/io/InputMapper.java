@@ -1,5 +1,6 @@
 package christmas.io;
 
+import christmas.constants.CategoryMenu;
 import christmas.constants.MenuBoard;
 import christmas.domain.*;
 
@@ -18,11 +19,16 @@ public class InputMapper {
     }
 
     public Menus toMenus(final String orders) {
-        List<Menu> menus = Arrays.stream(orders.split(DIVISION_COMMA))
+        List<Menu> menus = getSplitMenus(orders);
+        MenuBoard.validateExistMenu(menus);
+        CategoryMenu.validateOnlyBeverageOrder(menus);
+        return Menus.from(menus);
+    }
+
+    private List<Menu> getSplitMenus(String orders) {
+        return Arrays.stream(orders.split(DIVISION_COMMA))
                 .map(this::toMenu)
                 .toList();
-        MenuBoard.validateExistMenu(menus);
-        return Menus.from(menus);
     }
 
     private Menu toMenu(final String order) {
