@@ -15,7 +15,7 @@ class VisitDateTest {
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 0, 999})
-    @DisplayName("방문 날짜가 날짜 범위가 아닌 경우 에러가 발생한다.")
+    @DisplayName("방문 날짜가 날짜 범위가 아닌 경우 예외가 발생한다.")
     void When_ValidateVisitDatePeriod_Then_ThrowException(int value) {
         assertThatThrownBy(() -> new VisitDate(value))
                 .isInstanceOf(IllegalArgumentException.class)

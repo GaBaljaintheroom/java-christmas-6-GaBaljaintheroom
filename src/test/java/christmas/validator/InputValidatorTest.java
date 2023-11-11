@@ -19,7 +19,7 @@ class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "###", "-10"})
-    @DisplayName("0 이상 숫자를 입력하지 않았을 경우 에러가 발생한다.")
+    @DisplayName("0 이상 숫자를 입력하지 않았을 경우 예외가 발생한다.")
     void When_NotValidVisitDate_Then_ThrowException(String visitDate) {
         assertThatThrownBy(() -> inputValidator.validateNumericDate(visitDate))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -36,7 +36,7 @@ class InputValidatorTest {
 
     @ParameterizedTest
     @MethodSource("invalidOrderSources")
-    @DisplayName("주문 형식을 옳지 않게 입력하였을 경우 에러가 발생한다.")
+    @DisplayName("주문 형식을 옳지 않게 입력하였을 경우 예외가 발생한다.")
     void When_NotValidOrder_Then_ThrowException(String order) {
         assertThatThrownBy(() -> inputValidator.validateOrderPattern(order))
                 .isInstanceOf(IllegalArgumentException.class)

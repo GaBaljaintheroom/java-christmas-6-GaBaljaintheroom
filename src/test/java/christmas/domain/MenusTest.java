@@ -33,6 +33,18 @@ class MenusTest {
         );
     }
 
+    private List<Menu> overOrderMenuCountSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
+                Menu.of(Name.from("해산물파스타"), Amount.from(25))
+        );
+    }
+
+    private List<Menu> normalOrderMenuCountSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
+                Menu.of(Name.from("해산물파스타"), Amount.from(10))
+        );
+    }
+
     @Test
     @DisplayName("이름이 메뉴들에 포함되어 있으면 true를 반환한다.")
     void When_IsContainMenuInMenus_Then_ReturnTrue() {
@@ -54,7 +66,7 @@ class MenusTest {
     }
 
     @Test
-    @DisplayName("중복된 메뉴를 저장하면 에러가 발생한다.")
+    @DisplayName("중복된 메뉴를 저장하면 예외가 발생한다.")
     void When_InputDuplicatedMenu_Then_ThrowException() {
         assertThatThrownBy(() -> Menus.from(duplicatedMenuSources()))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -62,9 +74,24 @@ class MenusTest {
     }
 
     @Test
-    @DisplayName("정상적인 메뉴를 저장한다.")
+    @DisplayName("정상적인 중복 없는 메뉴를 저장한다.")
     void When_InputNormalMenu_Then_NotThrowException() {
         assertThatCode(() -> Menus.from(normalMenuSources()))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("한 번에 20가지 넘게 주문을 하면 예외가 발생한다.")
+    void When_OverOrderMenuCount_Then_ThrowException() {
+        assertThatThrownBy(() -> Menus.from(overOrderMenuCountSources()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(errorTage);
+    }
+
+    @Test
+    @DisplayName("정상적인 20가지 이하 주문을 저장한다.")
+    void When_InputNormalOrderMenuCount_Then_NotThrowException() {
+        assertThatCode(() -> Menus.from(normalOrderMenuCountSources()))
                 .doesNotThrowAnyException();
     }
 
