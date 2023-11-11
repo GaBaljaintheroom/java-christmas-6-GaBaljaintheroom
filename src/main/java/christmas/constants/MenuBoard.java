@@ -49,4 +49,8 @@ public enum MenuBoard {
                 .allMatch(name -> Stream.of(MenuBoard.values())
                         .anyMatch(menuBoard -> menuBoard.menus.isContainMenuName(name)));
     }
+
+    public Menus getMenus() {
+        return menus;
+    }
 }
