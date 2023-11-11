@@ -1,23 +1,34 @@
 package christmas.domain;
 
+import christmas.constants.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("메뉴들 객체에 대해")
 class MenusTest {
 
-    Menus menus = Menus.from(menuSources());
+    private static final String errorTage = ErrorMessage.ERROR_TAG.toString();
+    private final Menus menus = Menus.from(normalMenuSources());
 
-    List<Menu> menuSources() {
+    private List<Menu> normalMenuSources() {
         return List.of(Menu.of(Name.from("티본스테이크"), Price.from(55_000)),
                 Menu.of(Name.from("바비큐립"), Price.from(54_000)),
                 Menu.of(Name.from("해산물파스타"), Price.from(35_000)),
                 Menu.of(Name.from("크리스마스파스타"), Price.from(25_000))
+        );
+    }
+
+    private List<Menu> duplicatedMenuSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Price.from(55_000)),
+                Menu.of(Name.from("티본스테이크"), Price.from(54_000)),
+                Menu.of(Name.from("해산물파스타"), Price.from(35_000)),
+                Menu.of(Name.from("해산물파스타"), Price.from(25_000))
         );
     }
 
@@ -41,5 +52,11 @@ class MenusTest {
         assertFalse(actual);
     }
 
-
+    @Test
+    @DisplayName("중복된 메뉴를 저장하면 에러가 발생한다.")
+    void When_InputDuplicatedMenu_Then_ThrowException() {
+        assertThatThrownBy(() -> Menus.from(duplicatedMenuSources()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(errorTage);
+    }
 }
