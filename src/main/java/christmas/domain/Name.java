@@ -14,6 +14,10 @@ public class Name {
         return new Name(menuName);
     }
 
+    public String getMenuName() {
+        return menuName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

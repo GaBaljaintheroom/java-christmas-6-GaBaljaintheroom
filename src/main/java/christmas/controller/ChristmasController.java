@@ -27,6 +27,7 @@ public class ChristmasController {
         createVisitDate();
         orderMenus();
         outputView.printPreviewEventMessage(christmasService.getVisitDate());
+        outputView.printCheckOrderMenu(christmasService.checkOrderMenu());
     }
 
     private void createVisitDate() {

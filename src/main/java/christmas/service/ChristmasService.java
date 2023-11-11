@@ -2,6 +2,7 @@ package christmas.service;
 
 import christmas.domain.Menus;
 import christmas.domain.VisitDate;
+import christmas.formatter.OrderMenuFormatter;
 import christmas.repository.ChristmasRepository;
 
 public class ChristmasService {
@@ -23,6 +24,11 @@ public class ChristmasService {
     public Integer getVisitDate() {
         VisitDate visitDate = christmasRepository.getVisitDate();
         return visitDate.getDay();
+    }
+
+    public String checkOrderMenu() {
+        Menus orderMenus = christmasRepository.getOrderMenus();
+        return OrderMenuFormatter.showOrderMenus(orderMenus);
     }
 
 }

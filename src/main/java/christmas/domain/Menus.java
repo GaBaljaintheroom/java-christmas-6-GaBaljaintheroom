@@ -45,7 +45,7 @@ public class Menus {
 
     private int getOrderTotalCount(List<Menu> values) {
         return values.stream()
-                .mapToInt(Menu::getMenuAmount)
+                .mapToInt(Menu::getMenuAmountValue)
                 .sum();
     }
 
@@ -54,5 +54,9 @@ public class Menus {
         return values.stream()
                 .map(Menu::getMenuName)
                 .anyMatch(menuName -> menuName.equals(name));
+    }
+
+    public List<Menu> getValues() {
+        return List.copyOf(values);
     }
 }

@@ -10,18 +10,22 @@ import java.util.function.Supplier;
 public class ChristmasRepository {
 
     private VisitDate visitDate;
-    private Menus menus;
+    private Menus orderMenus;
 
     public void saveVisitDate(final VisitDate visitDate) {
         this.visitDate = visitDate;
     }
 
     public void saveOrderMenus(final Menus orderMenus) {
-        this.menus = orderMenus;
+        this.orderMenus = orderMenus;
     }
 
     public VisitDate getVisitDate() {
         return get(() -> this.visitDate);
+    }
+
+    public Menus getOrderMenus() {
+        return get(() -> this.orderMenus);
     }
 
     private <T> T get(final Supplier<T> supplier) {

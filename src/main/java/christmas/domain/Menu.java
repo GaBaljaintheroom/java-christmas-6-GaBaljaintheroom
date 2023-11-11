@@ -31,7 +31,11 @@ public class Menu {
         return menuName;
     }
 
-    public Integer getMenuAmount() {
+    public String getMenuNameValue() {
+        return menuName.getMenuName();
+    }
+
+    public Integer getMenuAmountValue() {
         return menuAmount.getMenuAmount();
     }
 }

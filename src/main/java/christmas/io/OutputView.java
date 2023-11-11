@@ -22,4 +22,8 @@ public class OutputView {
     public void printPreviewEventMessage(Integer visitDate) {
         System.out.printf((ProgressMessage.PREVIEW_EVENT_MESSAGE) + "%n", visitDate);
     }
+
+    public void printCheckOrderMenu(String checkOrderMenu) {
+        System.out.println(checkOrderMenu);
+    }
 }
