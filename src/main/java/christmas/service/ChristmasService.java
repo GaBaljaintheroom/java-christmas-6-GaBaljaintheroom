@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.Menus;
 import christmas.domain.VisitDate;
 import christmas.repository.ChristmasRepository;
 
@@ -13,5 +14,9 @@ public class ChristmasService {
 
     public void saveVisitDate(final VisitDate visitDate) {
         christmasRepository.saveVisitDate(visitDate);
+    }
+
+    public void saveOrderMenus(final Menus orderMenus) {
+        christmasRepository.saveOrderMenus(orderMenus);
     }
 }
