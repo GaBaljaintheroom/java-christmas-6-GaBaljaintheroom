@@ -26,8 +26,8 @@ public enum MenuBoard {
                     Menu.of(Name.from("아이스크림"), Price.from(5_000)))
             .toList())),
     BEVERAGE_MENU(Menus.from(Stream.of(
-                    Menu.of(Name.from("제로콜라"), Price.from(15_000)),
-                    Menu.of(Name.from("레드와인"), Price.from(5_000)),
+                    Menu.of(Name.from("제로콜라"), Price.from(3_000)),
+                    Menu.of(Name.from("레드와인"), Price.from(60_000)),
                     Menu.of(Name.from("샴페인"), Price.from(25_000)))
             .toList()));
 
