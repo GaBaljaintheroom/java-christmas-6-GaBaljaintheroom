@@ -15,6 +15,10 @@ public class Menu {
         return new Menu(name, price);
     }
 
+    public Name getMenuName() {
+        return menuName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

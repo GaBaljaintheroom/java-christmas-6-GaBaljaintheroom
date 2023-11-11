@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import christmas.constants.MenuBoard;
-
 import java.util.List;
 
 public class Menus {
@@ -9,7 +7,6 @@ public class Menus {
     private final List<Menu> values;
 
     private Menus(final List<Menu> values) {
-        MenuBoard.validateExistMenu(values);
         this.values = values;
     }
 
@@ -17,7 +14,9 @@ public class Menus {
         return new Menus(values);
     }
 
-    public boolean isContainMenuBoard(final Menu menu) {
-        return values.contains(menu);
+    public boolean isContainMenuName(final Name name) {
+        return values.stream()
+                .map(Menu::getMenuName)
+                .anyMatch(menuName -> menuName.equals(name));
     }
 }
