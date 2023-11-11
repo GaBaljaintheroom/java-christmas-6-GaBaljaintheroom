@@ -37,30 +37,30 @@ public enum MenuBoard {
         this.menus = menus;
     }
 
-    public static void validateExistMenu(List<Menu> menus) {
-        if (isNotExistOrder(menus)) {
+    public static void validateExistMenu(List<Menu> orderMenus) {
+        if (isNotExistOrder(orderMenus)) {
             throw new InvalidOrderException();
         }
     }
 
-    private static boolean isNotExistOrder(List<Menu> menus) {
-        return !menus.stream()
+    private static boolean isNotExistOrder(List<Menu> orderMenus) {
+        return !orderMenus.stream()
                 .map(Menu::getMenuName)
                 .allMatch(name -> Stream.of(MenuBoard.values())
                         .anyMatch(menuBoard -> menuBoard.menus.isContainMenuName(name)));
     }
 
-    public static Integer calculateTotalOrderPrice(Menus menus) {
-        return menus.getValues().stream()
+    public static Integer calculateTotalOrderPrice(Menus orderMenus) {
+        return orderMenus.getValues().stream()
                 .mapToInt(MenuBoard::calculateMenuPrice)
                 .sum();
     }
 
-    private static Integer calculateMenuPrice(Menu menu) {
+    private static Integer calculateMenuPrice(Menu orderMenu) {
         return Stream.of(MenuBoard.values())
-                .filter(menuBoard -> menuBoard.menus.isContainMenuName(menu.getMenuName()))
+                .filter(menuBoard -> menuBoard.menus.isContainMenuName(orderMenu.getMenuName()))
                 .findFirst()
-                .map(menuBoard -> menuBoard.menus.getPriceValueByMenuName(menu))
+                .map(menuBoard -> menuBoard.menus.getPriceValueByMenuName(orderMenu))
                 .orElse(0);
     }
 
