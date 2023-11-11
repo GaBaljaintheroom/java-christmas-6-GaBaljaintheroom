@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -93,6 +92,19 @@ class MenusTest {
     void When_InputNormalOrderMenuCount_Then_NotThrowException() {
         assertThatCode(() -> Menus.from(normalOrderMenuCountSources()))
                 .doesNotThrowAnyException();
+    }
+
+    @Test
+    @DisplayName("이름과 일치하는 메뉴의 가격을 반환한다.")
+    void Given_CreateMenus_When_GetPriceValueByMenuName_Then_EqualActual() {
+        //given
+        Menus menus = Menus.from(normalMenuSources());
+
+        //when
+        Integer actual = menus.getPriceValueByMenuName(Menu.of(Name.from("티본스테이크"), Amount.from(1)));
+
+        //then
+        assertThat(actual).isEqualTo(55000);
     }
 
 }
