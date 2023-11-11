@@ -1,5 +1,6 @@
 package christmas.io;
 
+import christmas.domain.Menus;
 import christmas.domain.VisitDate;
 
 public class InputManager {
@@ -15,5 +16,10 @@ public class InputManager {
     public VisitDate inputVisitDate() {
         String visitDate = inputView.inputVisitDate();
         return inputMapper.toVisitDate(visitDate);
+    }
+
+    public Menus inputOrderMenus() {
+        String order = inputView.inputOrder();
+        return inputMapper.toMenus(order);
     }
 }
