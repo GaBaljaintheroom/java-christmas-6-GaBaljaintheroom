@@ -14,4 +14,8 @@ public class OutputView {
     public void printVisitDateMessage() {
         System.out.println(ProgressMessage.VISIT_DATE_MESSAGE);
     }
+
+    public void printOrderMenuMessage() {
+        System.out.println(ProgressMessage.ORDER_MENU_MESSAGE);
+    }
 }

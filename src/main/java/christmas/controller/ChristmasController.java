@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Menus;
 import christmas.domain.VisitDate;
 import christmas.io.InputManager;
 import christmas.io.OutputView;
@@ -24,12 +25,19 @@ public class ChristmasController {
         outputView.printStartMessage();
 
         createVisitDate();
+        orderMenus();
     }
 
     private void createVisitDate() {
         outputView.printVisitDateMessage();
         VisitDate visitDate = read(inputManager::inputVisitDate);
         christmasService.saveVisitDate(visitDate);
+    }
+
+    private void orderMenus() {
+        outputView.printOrderMenuMessage();
+        Menus orderMenus = read(inputManager::inputOrderMenus);
+        christmasService.saveOrderMenus(orderMenus);
     }
 
     private <T> T read(final Supplier<T> supplier) {
