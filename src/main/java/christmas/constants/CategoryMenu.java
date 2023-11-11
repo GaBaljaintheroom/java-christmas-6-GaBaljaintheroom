@@ -2,7 +2,7 @@ package christmas.constants;
 
 import christmas.domain.Menu;
 import christmas.domain.Menus;
-import christmas.exception.InvalidOrderException;
+import christmas.exception.OnlyBeverageOrderException;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public enum CategoryMenu {
 
     public static void validateOnlyBeverageOrder(List<Menu> menus) {
         if (isOnlyBeverageOrder(menus)) {
-            throw new InvalidOrderException();
+            throw new OnlyBeverageOrderException();
         }
     }
 
