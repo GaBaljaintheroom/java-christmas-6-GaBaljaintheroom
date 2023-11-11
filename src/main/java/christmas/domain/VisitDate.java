@@ -24,4 +24,8 @@ public class VisitDate {
             throw new InvalidDateException();
         }
     }
+
+    public Integer getDay() {
+        return currentDate.getDayOfMonth();
+    }
 }

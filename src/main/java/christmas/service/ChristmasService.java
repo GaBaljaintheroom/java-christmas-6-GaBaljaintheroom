@@ -19,4 +19,10 @@ public class ChristmasService {
     public void saveOrderMenus(final Menus orderMenus) {
         christmasRepository.saveOrderMenus(orderMenus);
     }
+
+    public Integer getVisitDate() {
+        VisitDate visitDate = christmasRepository.getVisitDate();
+        return visitDate.getDay();
+    }
+
 }

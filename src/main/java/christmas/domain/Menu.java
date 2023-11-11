@@ -13,7 +13,7 @@ public class Menu {
         this.menuAmount = Amount.from(INIT_VALUE);
     }
 
-    private Menu(final Name name, final Amount amount){
+    private Menu(final Name name, final Amount amount) {
         this.menuName = name;
         this.menuAmount = amount;
         this.menuPrice = Price.from(INIT_VALUE);
