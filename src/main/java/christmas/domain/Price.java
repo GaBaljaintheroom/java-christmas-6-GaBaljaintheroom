@@ -11,4 +11,8 @@ public class Price {
     public static Price from(Integer menuPrice) {
         return new Price(menuPrice);
     }
+
+    public Integer getMenuPrice() {
+        return menuPrice;
+    }
 }

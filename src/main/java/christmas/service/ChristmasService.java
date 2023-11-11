@@ -1,6 +1,8 @@
 package christmas.service;
 
+import christmas.constants.MenuBoard;
 import christmas.domain.Menus;
+import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.repository.ChristmasRepository;
@@ -29,6 +31,14 @@ public class ChristmasService {
     public String checkOrderMenu() {
         Menus orderMenus = christmasRepository.getOrderMenus();
         return OrderMenuFormatter.showOrderMenus(orderMenus);
+    }
+
+    public void saveTotalOrderPrice() {
+        Menus orderMenus = christmasRepository.getOrderMenus();
+        Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
+        TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
+
+        christmasRepository.saveTotalOrderPrice(totalOrderPrice);
     }
 
 }

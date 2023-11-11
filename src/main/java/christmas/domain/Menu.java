@@ -27,12 +27,20 @@ public class Menu {
         return new Menu(name, amount);
     }
 
+    public boolean isEqualName(Name name) {
+        return menuName.equals(name);
+    }
+
     public Name getMenuName() {
         return menuName;
     }
 
     public String getMenuNameValue() {
         return menuName.getMenuName();
+    }
+
+    public Integer getPriceValue() {
+        return menuPrice.getMenuPrice();
     }
 
     public Integer getMenuAmountValue() {
