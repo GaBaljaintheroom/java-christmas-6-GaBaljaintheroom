@@ -23,7 +23,11 @@ public class OutputView {
         System.out.printf((ProgressMessage.PREVIEW_EVENT_MESSAGE) + "%n", visitDate);
     }
 
-    public void printCheckOrderMenu(String checkOrderMenu) {
+    public void printCheckOrderMenuMessage(String checkOrderMenu) {
         System.out.println(checkOrderMenu);
+    }
+
+    public void printToTalOrderPriceMessage(String checkTotalOrderPrice) {
+        System.out.println(checkTotalOrderPrice);
     }
 }

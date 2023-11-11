@@ -11,4 +11,8 @@ public class TotalOrderPrice {
     public static TotalOrderPrice from(Integer orderPrice) {
         return new TotalOrderPrice(orderPrice);
     }
+
+    public Integer getOrderPrice() {
+        return orderPrice;
+    }
 }

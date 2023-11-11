@@ -5,6 +5,7 @@ import christmas.domain.Menus;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
 import christmas.formatter.OrderMenuFormatter;
+import christmas.formatter.TotalOrderPriceFormatter;
 import christmas.repository.ChristmasRepository;
 
 public class ChristmasService {
@@ -39,6 +40,11 @@ public class ChristmasService {
         TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
 
         christmasRepository.saveTotalOrderPrice(totalOrderPrice);
+    }
+
+    public String checkTotalOrderPrice() {
+        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
     }
 
 }

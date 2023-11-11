@@ -34,6 +34,10 @@ public class ChristmasRepository {
         return get(() -> this.orderMenus);
     }
 
+    public TotalOrderPrice getTotalOrderPrice() {
+        return get(() -> this.totalOrderPrice);
+    }
+
     private <T> T get(final Supplier<T> supplier) {
         return Optional.ofNullable(supplier.get())
                 .orElseThrow(DomainNullException::new);

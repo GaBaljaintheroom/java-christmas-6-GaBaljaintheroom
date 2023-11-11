@@ -26,8 +26,7 @@ public class ChristmasController {
 
         createVisitDate();
         orderMenus();
-        outputView.printPreviewEventMessage(christmasService.getVisitDate());
-        outputView.printCheckOrderMenu(christmasService.checkOrderMenu());
+        previewEventBenefit();
     }
 
     private void createVisitDate() {
@@ -40,6 +39,15 @@ public class ChristmasController {
         outputView.printOrderMenuMessage();
         Menus orderMenus = read(inputManager::inputOrderMenus);
         christmasService.saveOrderMenus(orderMenus);
+    }
+
+    private void previewEventBenefit() {
+        outputView.printPreviewEventMessage(christmasService.getVisitDate());
+
+        outputView.printCheckOrderMenuMessage(christmasService.checkOrderMenu());
+
+        christmasService.saveTotalOrderPrice();
+        outputView.printToTalOrderPriceMessage(christmasService.checkTotalOrderPrice());
     }
 
     private <T> T read(final Supplier<T> supplier) {
