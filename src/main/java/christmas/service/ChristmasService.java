@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.constants.DaysEventCategory;
 import christmas.constants.MenuBoard;
 import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
@@ -31,7 +32,7 @@ public class ChristmasService {
 
     public Integer getVisitDate() {
         VisitDate visitDate = christmasRepository.getVisitDate();
-        return visitDate.getDay();
+        return visitDate.getDayOfMonth();
     }
 
     public String checkOrderMenu() {
@@ -69,6 +70,14 @@ public class ChristmasService {
         TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
         Integer discountPrice = visitDate.christmasDDayDiscount(totalOrderPrice);
         benefitDetailsRepository.saveChristmasDDayDiscount(discountPrice);
+    }
+
+    public void daysDiscount() {
+        VisitDate visitDate = christmasRepository.getVisitDate();
+        String dayOfWeek = visitDate.getDayOfWeek();
+        Menus orderMenus = christmasRepository.getOrderMenus();
+        Integer discountPrice = DaysEventCategory.daysDiscount(dayOfWeek, orderMenus);
+        benefitDetailsRepository.saveDaysDiscount(discountPrice);
     }
 
 }
