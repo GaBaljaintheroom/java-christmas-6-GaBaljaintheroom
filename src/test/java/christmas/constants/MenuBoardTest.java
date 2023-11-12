@@ -15,15 +15,6 @@ class MenuBoardTest {
 
     private static final String errorTage = ErrorMessage.ERROR_TAG.toString();
 
-    @ParameterizedTest
-    @MethodSource("notExistMenuSources")
-    @DisplayName("없는 메뉴를 주문할 시 예외가 발생한다.")
-    void When_NotExistMenuInMenuBoard_Then_ThrowException(List<Menu> menus) {
-        assertThatThrownBy(() -> MenuBoard.validateExistMenu(menus))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(errorTage);
-    }
-
     static Stream<List<Menu>> notExistMenuSources() {
         return Stream.of(List.of(
                 Menu.of(Name.from("양송이스푸푸"), Price.from(6_000)),
@@ -33,14 +24,6 @@ class MenuBoardTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("normalMenuSources")
-    @DisplayName("정상적으로 주문을 한다.")
-    void When_ExistMenuInMenuBoard_Then_NotThrowException(List<Menu> menus) {
-        assertThatCode(() -> MenuBoard.validateExistMenu(menus))
-                .doesNotThrowAnyException();
-    }
-
     static Stream<List<Menu>> normalMenuSources() {
         return Stream.of(List.of(
                 Menu.of(Name.from("양송이수프"), Price.from(6_000)),
@@ -48,6 +31,32 @@ class MenuBoardTest {
                 Menu.of(Name.from("초코케이크"), Price.from(15_000)),
                 Menu.of(Name.from("레드와인"), Price.from(5_000)))
         );
+    }
+
+    static Stream<List<Menu>> normalOrderSources() {
+        return Stream.of(List.of(
+                Menu.of(Name.from("양송이수프"), Amount.from(1)),
+                Menu.of(Name.from("타파스"), Amount.from(1)),
+                Menu.of(Name.from("초코케이크"), Amount.from(1)),
+                Menu.of(Name.from("레드와인"), Amount.from(1)))
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("notExistMenuSources")
+    @DisplayName("없는 메뉴를 주문할 시 예외가 발생한다.")
+    void When_NotExistMenuInMenuBoard_Then_ThrowException(List<Menu> menus) {
+        assertThatThrownBy(() -> MenuBoard.validateExistMenu(menus))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(errorTage);
+    }
+
+    @ParameterizedTest
+    @MethodSource("normalMenuSources")
+    @DisplayName("정상적으로 주문을 한다.")
+    void When_ExistMenuInMenuBoard_Then_NotThrowException(List<Menu> menus) {
+        assertThatCode(() -> MenuBoard.validateExistMenu(menus))
+                .doesNotThrowAnyException();
     }
 
     @ParameterizedTest
@@ -61,16 +70,7 @@ class MenuBoardTest {
         Integer actual = MenuBoard.calculateTotalOrderPrice(orderMenus);
 
         //then
-        assertThat(actual).isEqualTo(31_500);
-    }
-
-    static Stream<List<Menu>> normalOrderSources() {
-        return Stream.of(List.of(
-                Menu.of(Name.from("양송이수프"), Amount.from(1)),
-                Menu.of(Name.from("타파스"), Amount.from(1)),
-                Menu.of(Name.from("초코케이크"), Amount.from(1)),
-                Menu.of(Name.from("레드와인"), Amount.from(1)))
-        );
+        assertThat(actual).isEqualTo(86_500);
     }
 
 }

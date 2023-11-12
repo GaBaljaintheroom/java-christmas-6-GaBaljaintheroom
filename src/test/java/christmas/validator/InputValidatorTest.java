@@ -17,6 +17,14 @@ class InputValidatorTest {
     private static final String errorTage = ErrorMessage.ERROR_TAG.toString();
     private final InputValidator inputValidator = new InputValidator();
 
+    static Stream<String> invalidOrderSources() {
+        return Stream.of("해산물파스타/2,레드와인-1,초코케이크/1", "해산물파스타-0,레드와인-1,초코케이크-0", "해산물파스타-0");
+    }
+
+    static Stream<String> validOrderSources() {
+        return Stream.of("해산물파스타-2,레드와인-1,초코케이크-1", "해산물파스타-55,레드와인-1", "해산물파스타-999");
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"pobi", "###", "-10"})
     @DisplayName("0 이상 숫자를 입력하지 않았을 경우 예외가 발생한다.")
@@ -49,13 +57,5 @@ class InputValidatorTest {
     void When_ValidOrder_Then_NotThrowException(String order) {
         assertThatCode(() -> inputValidator.validateOrderPattern(order))
                 .doesNotThrowAnyException();
-    }
-
-    static Stream<String> invalidOrderSources() {
-        return Stream.of("해산물파스타/2,레드와인-1,초코케이크/1", "해산물파스타-0,레드와인-1,초코케이크-0", "해산물파스타-0");
-    }
-
-    static Stream<String> validOrderSources() {
-        return Stream.of("해산물파스타-2,레드와인-1,초코케이크-1", "해산물파스타-55,레드와인-1", "해산물파스타-999");
     }
 }

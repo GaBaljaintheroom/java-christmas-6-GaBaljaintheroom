@@ -18,6 +18,22 @@ class CategoryMenuTest {
 
     private static final String errorTage = ErrorMessage.ERROR_TAG.toString();
 
+    static Stream<List<Menu>> onlyBeverageSources() {
+        return Stream.of(List.of(
+                Menu.of(Name.from("제로콜라"), Price.from(15_000)),
+                Menu.of(Name.from("레드와인"), Price.from(5_000)),
+                Menu.of(Name.from("샴페인"), Price.from(25_000)))
+        );
+    }
+
+    static Stream<List<Menu>> normalMenuSources() {
+        return Stream.of(List.of(
+                Menu.of(Name.from("제로콜라"), Price.from(15_000)),
+                Menu.of(Name.from("레드와인"), Price.from(5_000)),
+                Menu.of(Name.from("바비큐립"), Price.from(25_000)))
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("onlyBeverageSources")
     @DisplayName("음료만 주문시 예외가 발생한다.")
@@ -27,27 +43,11 @@ class CategoryMenuTest {
                 .hasMessageContaining(errorTage);
     }
 
-    static Stream<List<Menu>> onlyBeverageSources() {
-        return Stream.of(List.of(
-                Menu.of(Name.from("제로콜라"), Price.from(15_000)),
-                Menu.of(Name.from("레드와인"), Price.from(5_000)),
-                Menu.of(Name.from("샴페인"), Price.from(25_000)))
-        );
-    }
-
     @ParameterizedTest
     @MethodSource("normalMenuSources")
     @DisplayName("정상적으로 주문을 한다.")
     void When_InputCorrectOrder_Then_NotThrowException(List<Menu> menus) {
         assertThatCode(() -> CategoryMenu.validateOnlyBeverageOrder(menus))
                 .doesNotThrowAnyException();
-    }
-
-    static Stream<List<Menu>> normalMenuSources() {
-        return Stream.of(List.of(
-                Menu.of(Name.from("제로콜라"), Price.from(15_000)),
-                Menu.of(Name.from("레드와인"), Price.from(5_000)),
-                Menu.of(Name.from("바비큐립"), Price.from(25_000)))
-        );
     }
 }
