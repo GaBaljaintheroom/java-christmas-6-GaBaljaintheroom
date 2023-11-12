@@ -56,4 +56,14 @@ class VisitDateTest {
         //then
         assertThat(actual).isZero();
     }
+
+    @Test
+    @DisplayName("방문 날짜의 요일을 구한다.")
+    void Given_CreateVisitDate_When_GetDayOfWeek_Then_EqualActual() {
+        VisitDate visitDate = VisitDate.from(3);
+
+        String actual = visitDate.getDayOfWeek();
+
+        assertThat(actual).isEqualTo("일요일");
+    }
 }
