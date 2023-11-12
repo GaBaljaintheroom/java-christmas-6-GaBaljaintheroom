@@ -9,6 +9,7 @@ public class BenefitDetailsRepository {
 
     private Integer christmasDDayDiscount;
     private Integer daysDiscount;
+    private Integer specialEventDayDiscount;
 
     public void saveChristmasDDayDiscount(Integer christmasDDayDiscount) {
         this.christmasDDayDiscount = christmasDDayDiscount;
@@ -16,6 +17,10 @@ public class BenefitDetailsRepository {
 
     public void saveDaysDiscount(Integer daysDiscount) {
         this.daysDiscount = daysDiscount;
+    }
+
+    public void saveSpecialEventDayDiscount(Integer specialEventDayDiscount) {
+        this.specialEventDayDiscount = specialEventDayDiscount;
     }
 
     private <T> T get(final Supplier<T> supplier) {

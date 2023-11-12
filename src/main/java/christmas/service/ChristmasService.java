@@ -2,6 +2,7 @@ package christmas.service;
 
 import christmas.constants.DaysEventCategory;
 import christmas.constants.MenuBoard;
+import christmas.constants.SpecialEventDay;
 import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
 import christmas.domain.TotalOrderPrice;
@@ -82,5 +83,14 @@ public class ChristmasService {
         Integer discountPrice = DaysEventCategory.daysDiscount(totalOrderPrice, dayOfWeek, orderMenus);
         benefitDetailsRepository.saveDaysDiscount(discountPrice);
     }
+
+    public void specialEventDiscount() {
+        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+
+        VisitDate visitDate = christmasRepository.getVisitDate();
+        Integer discountPrice = SpecialEventDay.specialDayEventDiscount(totalOrderPrice, visitDate.getDayOfMonth());
+        benefitDetailsRepository.saveSpecialEventDayDiscount(discountPrice);
+    }
+
 
 }
