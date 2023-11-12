@@ -14,4 +14,8 @@ public class TotalBenefitPrice {
                 + specialEventDiscount.getDiscount() + giveawayMenu.getPrice();
         return new TotalBenefitPrice(totalBenefit);
     }
+
+    public Integer getPrice() {
+        return price;
+    }
 }

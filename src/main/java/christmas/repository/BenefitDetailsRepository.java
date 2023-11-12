@@ -50,6 +50,10 @@ public class BenefitDetailsRepository {
         return get(() -> this.giveawayMenu);
     }
 
+    public TotalBenefitPrice getTotalBenefitPrice() {
+        return get(() -> this.totalBenefitPrice);
+    }
+
     private <T> T get(final Supplier<T> supplier) {
         return Optional.ofNullable(supplier.get())
                 .orElseThrow(DomainNullException::new);

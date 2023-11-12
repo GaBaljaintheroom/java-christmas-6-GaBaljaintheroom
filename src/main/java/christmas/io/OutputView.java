@@ -38,4 +38,8 @@ public class OutputView {
     public void printBenefitDetailsMessage(String showBenefitDetails) {
         System.out.println(showBenefitDetails);
     }
+
+    public void printTotalBenefitPrice(String showTotalBenefitPrice) {
+        System.out.println(showTotalBenefitPrice);
+    }
 }

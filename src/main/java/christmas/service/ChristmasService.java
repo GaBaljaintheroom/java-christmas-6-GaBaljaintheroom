@@ -4,10 +4,7 @@ import christmas.constants.DaysEventCategory;
 import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
 import christmas.domain.*;
-import christmas.formatter.BenefitDetailsFormatter;
-import christmas.formatter.GiveawayMenuFormatter;
-import christmas.formatter.OrderMenuFormatter;
-import christmas.formatter.TotalOrderPriceFormatter;
+import christmas.formatter.*;
 import christmas.repository.BenefitDetailsRepository;
 import christmas.repository.OrderRepository;
 
@@ -106,6 +103,9 @@ public class ChristmasService {
         return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
     }
 
-
+    public String showTotalBenefitPrice() {
+        TotalBenefitPrice totalBenefitPrice = benefitDetailsRepository.getTotalBenefitPrice();
+        return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalBenefitPrice);
+    }
 
 }
