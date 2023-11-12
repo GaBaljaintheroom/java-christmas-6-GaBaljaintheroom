@@ -3,6 +3,7 @@ package christmas.domain;
 public class TotalOrderPrice {
 
     private static final Integer EXPECTED_ORDER_PRICE = 120_000;
+    private static final Integer EVENT_APPLIED_PRICE = 10_000;
     private final Integer orderPrice;
 
     private TotalOrderPrice(Integer orderPrice) {
@@ -15,6 +16,10 @@ public class TotalOrderPrice {
 
     public Boolean canGiveawayEvent() {
         return orderPrice >= EXPECTED_ORDER_PRICE;
+    }
+
+    public Boolean canApplyEvent() {
+        return orderPrice >= EVENT_APPLIED_PRICE;
     }
 
     public Integer getOrderPrice() {

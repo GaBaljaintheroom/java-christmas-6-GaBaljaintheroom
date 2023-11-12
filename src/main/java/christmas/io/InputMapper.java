@@ -15,7 +15,7 @@ public class InputMapper {
     private static final int SECOND_ELEMENT = 1;
 
     public VisitDate toVisitDate(final String visitDate) {
-        return new VisitDate(Integer.parseInt(visitDate));
+        return VisitDate.from(Integer.parseInt(visitDate));
     }
 
     public Menus toMenus(final String orders) {
