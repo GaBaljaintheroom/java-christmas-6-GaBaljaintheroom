@@ -12,7 +12,7 @@ public class BenefitDetailsRepository {
     private DaysDiscount daysDiscount;
     private SpecialEventDiscount specialEventDayDiscount;
     private GiveawayMenu giveawayMenu;
-    private TotalBenefitPrice totalBenefitPrice;
+    private TotalDiscountPrice totalDiscountPrice;
 
     public void saveChristmasDDayDiscount(ChristmasDDayDiscount christmasDDayDiscount) {
         this.christmasDDayDiscount = christmasDDayDiscount;
@@ -30,8 +30,8 @@ public class BenefitDetailsRepository {
         this.giveawayMenu = giveawayMenu;
     }
 
-    public void saveTotalBenefitPrice(TotalBenefitPrice totalBenefitPrice) {
-        this.totalBenefitPrice = totalBenefitPrice;
+    public void saveTotalDiscountPrice(TotalDiscountPrice totalDiscountPrice) {
+        this.totalDiscountPrice = totalDiscountPrice;
     }
 
     public ChristmasDDayDiscount getChristMasDDayDiscount() {
@@ -50,8 +50,8 @@ public class BenefitDetailsRepository {
         return get(() -> this.giveawayMenu);
     }
 
-    public TotalBenefitPrice getTotalBenefitPrice() {
-        return get(() -> this.totalBenefitPrice);
+    public TotalDiscountPrice getTotalDiscountPrice() {
+        return get(() -> this.totalDiscountPrice);
     }
 
     private <T> T get(final Supplier<T> supplier) {

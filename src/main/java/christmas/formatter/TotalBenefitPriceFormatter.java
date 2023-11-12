@@ -1,6 +1,7 @@
 package christmas.formatter;
 
-import christmas.domain.TotalBenefitPrice;
+import christmas.domain.GiveawayMenu;
+import christmas.domain.TotalDiscountPrice;
 
 public final class TotalBenefitPriceFormatter {
 
@@ -12,22 +13,23 @@ public final class TotalBenefitPriceFormatter {
     private TotalBenefitPriceFormatter() {
     }
 
-    public static String showExpectedOrderPrice(TotalBenefitPrice totalBenefitPrice) {
+    public static String showExpectedOrderPrice(TotalDiscountPrice totalDiscountPrice, GiveawayMenu giveawayMenu) {
         sb.append(TOTAL_BENEFIT_PRICE);
+        int totalBenefitPrice = totalDiscountPrice.getPrice() + giveawayMenu.getPrice();
         appendTotalBenefitPrice(totalBenefitPrice);
         appendNoTotalBenefitPrice(totalBenefitPrice);
 
         return sb.toString();
     }
 
-    private static void appendTotalBenefitPrice(TotalBenefitPrice totalBenefitPrice) {
-        if (totalBenefitPrice.getPrice() != 0) {
-            sb.append(String.format(TOTAL_BENEFIT_PRICE_FORM, totalBenefitPrice.getPrice()));
+    private static void appendTotalBenefitPrice(int totalBenefitPrice) {
+        if (totalBenefitPrice != 0) {
+            sb.append(String.format(TOTAL_BENEFIT_PRICE_FORM, totalBenefitPrice));
         }
     }
 
-    private static void appendNoTotalBenefitPrice(TotalBenefitPrice totalBenefitPrice) {
-        if (totalBenefitPrice.getPrice() == 0) {
+    private static void appendNoTotalBenefitPrice(int totalBenefitPrice) {
+        if (totalBenefitPrice == 0) {
             sb.append(NONE);
         }
     }

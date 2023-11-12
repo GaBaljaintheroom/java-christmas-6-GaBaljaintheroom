@@ -97,15 +97,16 @@ public class ChristmasService {
         SpecialEventDiscount specialEventDiscount = benefitDetailsRepository.getSpecialEventDiscount();
         GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
 
-        TotalBenefitPrice totalBenefitPrice = TotalBenefitPrice.from(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
-        benefitDetailsRepository.saveTotalBenefitPrice(totalBenefitPrice);
+        TotalDiscountPrice totalDiscountPrice = TotalDiscountPrice.from(christMasDDayDiscount, daysDiscount, specialEventDiscount);
+        benefitDetailsRepository.saveTotalDiscountPrice(totalDiscountPrice);
 
         return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
     }
 
     public String showTotalBenefitPrice() {
-        TotalBenefitPrice totalBenefitPrice = benefitDetailsRepository.getTotalBenefitPrice();
-        return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalBenefitPrice);
+        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
+        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+        return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalDiscountPrice, giveawayMenu);
     }
 
 }
