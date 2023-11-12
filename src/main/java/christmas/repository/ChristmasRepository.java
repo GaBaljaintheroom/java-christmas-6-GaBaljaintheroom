@@ -1,5 +1,6 @@
 package christmas.repository;
 
+import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
@@ -13,6 +14,7 @@ public class ChristmasRepository {
     private VisitDate visitDate;
     private Menus orderMenus;
     private TotalOrderPrice totalOrderPrice;
+    private GiveawayMenu giveawayMenu;
 
     public void saveVisitDate(final VisitDate visitDate) {
         this.visitDate = visitDate;
@@ -34,6 +36,10 @@ public class ChristmasRepository {
         return get(() -> this.orderMenus);
     }
 
+    public GiveawayMenu getGiveawayMenu() {
+        return get(() -> this.giveawayMenu);
+    }
+
     public TotalOrderPrice getTotalOrderPrice() {
         return get(() -> this.totalOrderPrice);
     }
@@ -41,5 +47,9 @@ public class ChristmasRepository {
     private <T> T get(final Supplier<T> supplier) {
         return Optional.ofNullable(supplier.get())
                 .orElseThrow(DomainNullException::new);
+    }
+
+    public void saveGiveawayMenu(GiveawayMenu giveawayMenu) {
+        this.giveawayMenu = giveawayMenu;
     }
 }

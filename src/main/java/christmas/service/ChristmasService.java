@@ -1,9 +1,11 @@
 package christmas.service;
 
 import christmas.constants.MenuBoard;
+import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
+import christmas.formatter.GiveawayMenuFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
 import christmas.repository.ChristmasRepository;
@@ -45,6 +47,18 @@ public class ChristmasService {
     public String checkTotalOrderPrice() {
         TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
         return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
+    }
+
+    public void saveGiveawayMenu() {
+        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        GiveawayMenu giveawayMenu = GiveawayMenu.from(totalOrderPrice.canGiveawayEvent());
+        christmasRepository.saveGiveawayMenu(giveawayMenu);
+
+    }
+
+    public String checkGiveWayMenu() {
+        GiveawayMenu giveawayMenu = christmasRepository.getGiveawayMenu();
+        return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
     }
 
 }
