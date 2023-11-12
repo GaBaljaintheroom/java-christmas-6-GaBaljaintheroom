@@ -11,83 +11,83 @@ import christmas.formatter.GiveawayMenuFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
 import christmas.repository.BenefitDetailsRepository;
-import christmas.repository.ChristmasRepository;
+import christmas.repository.OrderRepository;
 
 public class ChristmasService {
 
-    private final ChristmasRepository christmasRepository;
+    private final OrderRepository orderRepository;
     private final BenefitDetailsRepository benefitDetailsRepository;
 
-    public ChristmasService(final ChristmasRepository christmasRepository, final BenefitDetailsRepository benefitDetailsRepository) {
-        this.christmasRepository = christmasRepository;
+    public ChristmasService(final OrderRepository orderRepository, final BenefitDetailsRepository benefitDetailsRepository) {
+        this.orderRepository = orderRepository;
         this.benefitDetailsRepository = benefitDetailsRepository;
     }
 
     public void saveVisitDate(final VisitDate visitDate) {
-        christmasRepository.saveVisitDate(visitDate);
+        orderRepository.saveVisitDate(visitDate);
     }
 
     public void saveOrderMenus(final Menus orderMenus) {
-        christmasRepository.saveOrderMenus(orderMenus);
+        orderRepository.saveOrderMenus(orderMenus);
     }
 
     public Integer getVisitDate() {
-        VisitDate visitDate = christmasRepository.getVisitDate();
+        VisitDate visitDate = orderRepository.getVisitDate();
         return visitDate.getDayOfMonth();
     }
 
     public String checkOrderMenu() {
-        Menus orderMenus = christmasRepository.getOrderMenus();
+        Menus orderMenus = orderRepository.getOrderMenus();
         return OrderMenuFormatter.showOrderMenus(orderMenus);
     }
 
     public void saveTotalOrderPrice() {
-        Menus orderMenus = christmasRepository.getOrderMenus();
+        Menus orderMenus = orderRepository.getOrderMenus();
         Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
         TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
 
-        christmasRepository.saveTotalOrderPrice(totalOrderPrice);
+        orderRepository.saveTotalOrderPrice(totalOrderPrice);
     }
 
     public String checkTotalOrderPrice() {
-        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
     }
 
     public void saveGiveawayMenu() {
-        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         GiveawayMenu giveawayMenu = GiveawayMenu.from(totalOrderPrice.canGiveawayEvent());
-        christmasRepository.saveGiveawayMenu(giveawayMenu);
+        benefitDetailsRepository.saveGiveawayMenu(giveawayMenu);
 
     }
 
     public String checkGiveWayMenu() {
-        GiveawayMenu giveawayMenu = christmasRepository.getGiveawayMenu();
+        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
         return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
     }
 
     public void christmasDDayDiscount() {
-        VisitDate visitDate = christmasRepository.getVisitDate();
-        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        VisitDate visitDate = orderRepository.getVisitDate();
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         Integer discountPrice = visitDate.christmasDDayDiscount(totalOrderPrice);
         benefitDetailsRepository.saveChristmasDDayDiscount(discountPrice);
     }
 
     public void daysDiscount() {
-        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
-        VisitDate visitDate = christmasRepository.getVisitDate();
+        VisitDate visitDate = orderRepository.getVisitDate();
         String dayOfWeek = visitDate.getDayOfWeek();
-        Menus orderMenus = christmasRepository.getOrderMenus();
+        Menus orderMenus = orderRepository.getOrderMenus();
 
         Integer discountPrice = DaysEventCategory.daysDiscount(totalOrderPrice, dayOfWeek, orderMenus);
         benefitDetailsRepository.saveDaysDiscount(discountPrice);
     }
 
     public void specialEventDiscount() {
-        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
-        VisitDate visitDate = christmasRepository.getVisitDate();
+        VisitDate visitDate = orderRepository.getVisitDate();
         Integer discountPrice = SpecialEventDay.specialDayEventDiscount(totalOrderPrice, visitDate.getDayOfMonth());
         benefitDetailsRepository.saveSpecialEventDayDiscount(discountPrice);
     }

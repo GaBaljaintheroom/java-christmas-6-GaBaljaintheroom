@@ -6,7 +6,7 @@ import christmas.io.InputMapper;
 import christmas.io.InputView;
 import christmas.io.OutputView;
 import christmas.repository.BenefitDetailsRepository;
-import christmas.repository.ChristmasRepository;
+import christmas.repository.OrderRepository;
 import christmas.service.ChristmasService;
 import christmas.validator.InputValidator;
 
@@ -44,11 +44,11 @@ public enum ChristmasFactory {
     }
 
     private ChristmasService christmasService() {
-        return new ChristmasService(christmasRepository(), benefitDetailsRepository());
+        return new ChristmasService(orderRepository(), benefitDetailsRepository());
     }
 
-    private ChristmasRepository christmasRepository() {
-        return new ChristmasRepository();
+    private OrderRepository orderRepository() {
+        return new OrderRepository();
     }
 
     private BenefitDetailsRepository benefitDetailsRepository() {
