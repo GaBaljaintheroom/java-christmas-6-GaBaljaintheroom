@@ -2,10 +2,10 @@ package christmas.domain;
 
 public class TotalDiscountPrice {
 
-    private final Integer price;
+    private final Integer discountPrice;
 
     private TotalDiscountPrice(Integer price) {
-        this.price = price;
+        this.discountPrice = price;
     }
 
     public static TotalDiscountPrice from(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount
@@ -15,7 +15,7 @@ public class TotalDiscountPrice {
         return new TotalDiscountPrice(totalBenefit);
     }
 
-    public Integer getPrice() {
-        return price;
+    public Integer getDiscountPrice() {
+        return discountPrice;
     }
 }

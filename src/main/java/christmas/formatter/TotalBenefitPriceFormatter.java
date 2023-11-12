@@ -15,7 +15,7 @@ public final class TotalBenefitPriceFormatter {
 
     public static String showExpectedOrderPrice(TotalDiscountPrice totalDiscountPrice, GiveawayMenu giveawayMenu) {
         sb.append(TOTAL_BENEFIT_PRICE);
-        int totalBenefitPrice = totalDiscountPrice.getPrice() + giveawayMenu.getPrice();
+        int totalBenefitPrice = totalDiscountPrice.getDiscountPrice() + giveawayMenu.getPrice();
         appendTotalBenefitPrice(totalBenefitPrice);
         appendNoTotalBenefitPrice(totalBenefitPrice);
 

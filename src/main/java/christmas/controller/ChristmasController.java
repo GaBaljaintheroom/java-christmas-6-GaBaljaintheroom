@@ -46,7 +46,7 @@ public class ChristmasController {
 
         outputView.printCheckOrderMenuMessage(christmasService.checkOrderMenu());
 
-        christmasService.saveOrderPrice();
+        christmasService.saveTotalOrderPrice();
         outputView.printToTalOrderPriceMessage(christmasService.checkTotalOrderPrice());
 
         christmasService.saveGiveawayMenu();
@@ -62,6 +62,12 @@ public class ChristmasController {
 
         // 총 혜택 금액 출력
         outputView.printTotalBenefitPrice(christmasService.showTotalBenefitPrice());
+
+        // 할인 후 예상 결제 금액 저장
+        christmasService.saveExpectOrderPrice();
+
+        // 할인 후 예상 결제 출력
+        outputView.printExpectOrderPrice(christmasService.showExpectOrderPrice());
     }
 
     private <T> T read(final Supplier<T> supplier) {

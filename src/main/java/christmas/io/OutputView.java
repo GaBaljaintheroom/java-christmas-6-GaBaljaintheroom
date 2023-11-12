@@ -42,4 +42,8 @@ public class OutputView {
     public void printTotalBenefitPrice(String showTotalBenefitPrice) {
         System.out.println(showTotalBenefitPrice);
     }
+
+    public void printExpectOrderPrice(String showExpectOrderPrice) {
+        System.out.println(showExpectOrderPrice);
+    }
 }

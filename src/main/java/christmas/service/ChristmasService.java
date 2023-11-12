@@ -36,14 +36,12 @@ public class ChristmasService {
         return OrderMenuFormatter.showOrderMenus(orderMenus);
     }
 
-    public void saveOrderPrice() {
+    public void saveTotalOrderPrice() {
         Menus orderMenus = orderRepository.getOrderMenus();
         Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
         TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
-        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(totalOrderPrice);
 
         orderRepository.saveTotalOrderPrice(totalOrderPrice);
-        orderRepository.saveExpectOrderPrice(expectOrderPrice);
     }
 
     public String checkTotalOrderPrice() {
@@ -107,6 +105,19 @@ public class ChristmasService {
         TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
         GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
         return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalDiscountPrice, giveawayMenu);
+    }
+
+    public void saveExpectOrderPrice() {
+        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
+        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
+        int expectOrderPrice = totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
+
+        orderRepository.saveExpectOrderPrice(ExpectOrderPrice.from(expectOrderPrice));
+    }
+
+    public String showExpectOrderPrice() {
+        ExpectOrderPrice expectOrderPrice = orderRepository.getExpectOrderPrice();
+        return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
     }
 
 }
