@@ -3,6 +3,8 @@ package christmas.domain;
 import christmas.exception.InvalidDateException;
 
 import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class VisitDate {
 
@@ -29,7 +31,7 @@ public class VisitDate {
         }
     }
 
-    public Integer getDay() {
+    public Integer getDayOfMonth() {
         return currentDate.getDayOfMonth();
     }
 
@@ -47,5 +49,10 @@ public class VisitDate {
     private boolean canApplyDDayDiscount() {
         int day = currentDate.getDayOfMonth();
         return day <= 25;
+    }
+
+    public String getDayOfWeek() {
+        return currentDate.getDayOfWeek()
+                .getDisplayName(TextStyle.FULL, Locale.KOREAN);
     }
 }

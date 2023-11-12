@@ -68,4 +68,11 @@ public class Menus {
     public List<Menu> getValues() {
         return List.copyOf(values);
     }
+
+    public Long matchingOrderMenuCount(Menus orderMenus) {
+        return orderMenus.getValues().stream()
+                .map(Menu::getMenuName)
+                .filter(this::isContainMenuName)
+                .count();
+    }
 }

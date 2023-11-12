@@ -34,4 +34,7 @@ public enum CategoryMenu {
                 .allMatch(beverageMenus::isContainMenuName);
     }
 
+    public Long getDiscountMenuCount(Menus orderMenus) {
+        return this.menuBoard.matchingOrderMenuCount(orderMenus);
+    }
 }
