@@ -1,9 +1,6 @@
 package christmas.constants;
 
-import christmas.domain.Amount;
-import christmas.domain.Menu;
-import christmas.domain.Menus;
-import christmas.domain.Name;
+import christmas.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -33,7 +30,7 @@ class DaysEventCategoryTest {
         Menus orderMenus = Menus.from(menus);
 
         //when
-        Integer discount = DaysEventCategory.daysDiscount("금요일", orderMenus);
+        Integer discount = DaysEventCategory.daysDiscount(TotalOrderPrice.from(10000), "금요일", orderMenus);
 
         //then
         assertThat(discount).isEqualTo(2023);
