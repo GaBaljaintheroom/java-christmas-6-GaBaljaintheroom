@@ -75,11 +75,11 @@ public class ChristmasService {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
         VisitDate visitDate = orderRepository.getVisitDate();
-        String dayOfWeek = visitDate.getDayOfWeek();
         Menus orderMenus = orderRepository.getOrderMenus();
 
-        Integer discountPrice = DaysEventCategory.daysDiscount(totalOrderPrice, dayOfWeek, orderMenus);
-        benefitDetailsRepository.saveDaysDiscount(discountPrice);
+        Integer discountPrice = DaysEventCategory.daysDiscount(visitDate, orderMenus);
+        DaysDiscount daysDiscount = DaysDiscount.from(totalOrderPrice, discountPrice);
+        benefitDetailsRepository.saveDaysDiscount(daysDiscount);
     }
 
     public void specialEventDiscount() {
