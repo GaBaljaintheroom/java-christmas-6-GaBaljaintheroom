@@ -1,6 +1,7 @@
 package christmas.constants;
 
 import christmas.domain.Menus;
+import christmas.domain.TotalOrderPrice;
 import christmas.exception.NotFoundCategoryMenuByDay;
 
 import java.util.Arrays;
@@ -22,10 +23,13 @@ public enum DaysEventCategory {
         this.categoryMenu = categoryMenu;
     }
 
-    public static Integer daysDiscount(String dayOfWeek, Menus orderMenus) {
-        CategoryMenu categoryMenuByDay = findCategoryMenuByDay(dayOfWeek);
-        Long discountMenuCount = categoryMenuByDay.getDiscountMenuCount(orderMenus);
-        return discountMenuCount.intValue() * DISCOUNT_AMOUNT;
+    public static Integer daysDiscount(TotalOrderPrice totalOrderPrice, String dayOfWeek, Menus orderMenus) {
+        if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent())) {
+            CategoryMenu categoryMenuByDay = findCategoryMenuByDay(dayOfWeek);
+            Long discountMenuCount = categoryMenuByDay.getDiscountMenuCount(orderMenus);
+            return discountMenuCount.intValue() * DISCOUNT_AMOUNT;
+        }
+        return 0;
     }
 
     private static CategoryMenu findCategoryMenuByDay(String dayOfWeek) {
