@@ -46,4 +46,8 @@ public class OutputView {
     public void printExpectOrderPrice(String showExpectOrderPrice) {
         System.out.println(showExpectOrderPrice);
     }
+
+    public void printEventBadge(String showEventBadge) {
+        System.out.println(showEventBadge);
+    }
 }

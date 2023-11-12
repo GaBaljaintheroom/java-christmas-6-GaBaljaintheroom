@@ -1,6 +1,7 @@
 package christmas.service;
 
 import christmas.constants.DaysEventCategory;
+import christmas.constants.EventBadge;
 import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
 import christmas.domain.*;
@@ -118,6 +119,13 @@ public class ChristmasService {
     public String showExpectOrderPrice() {
         ExpectOrderPrice expectOrderPrice = orderRepository.getExpectOrderPrice();
         return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
+    }
+
+    public String showEventBadge() {
+        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
+        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+        String badge = EventBadge.getBadgeByTotalBenefitPrice(totalDiscountPrice, giveawayMenu);
+        return EventBadgeFormatter.showEventBadge(badge);
     }
 
 }

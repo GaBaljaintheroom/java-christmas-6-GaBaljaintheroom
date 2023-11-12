@@ -68,6 +68,9 @@ public class ChristmasController {
 
         // 할인 후 예상 결제 출력
         outputView.printExpectOrderPrice(christmasService.showExpectOrderPrice());
+
+        // 12월 이벤트 배지 출력
+        outputView.printEventBadge(christmasService.showEventBadge());
     }
 
     private <T> T read(final Supplier<T> supplier) {
