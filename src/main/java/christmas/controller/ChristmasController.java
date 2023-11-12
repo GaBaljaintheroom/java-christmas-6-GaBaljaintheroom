@@ -46,7 +46,7 @@ public class ChristmasController {
 
         outputView.printCheckOrderMenuMessage(christmasService.checkOrderMenu());
 
-        christmasService.saveTotalOrderPrice();
+        christmasService.saveOrderPrice();
         outputView.printToTalOrderPriceMessage(christmasService.checkTotalOrderPrice());
 
         christmasService.saveGiveawayMenu();
