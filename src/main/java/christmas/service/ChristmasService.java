@@ -71,7 +71,7 @@ public class ChristmasService {
         benefitDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
     }
 
-    public void daysDiscount() {
+    public void saveDaysDiscount() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
         VisitDate visitDate = orderRepository.getVisitDate();
@@ -82,7 +82,7 @@ public class ChristmasService {
         benefitDetailsRepository.saveDaysDiscount(daysDiscount);
     }
 
-    public void specialEventDiscount() {
+    public void saveSpecialEventDiscount() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
         VisitDate visitDate = orderRepository.getVisitDate();

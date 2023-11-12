@@ -9,11 +9,11 @@ public class ChristmasDDayDiscount {
     }
 
     public static ChristmasDDayDiscount from(TotalOrderPrice totalOrderPrice, VisitDate visitDate) {
-        Integer discount = calculateDiscount(totalOrderPrice, visitDate);
+        Integer discount = applyDiscount(totalOrderPrice, visitDate);
         return new ChristmasDDayDiscount(discount);
     }
 
-    private static Integer calculateDiscount(TotalOrderPrice totalOrderPrice, VisitDate visitDate) {
+    private static Integer applyDiscount(TotalOrderPrice totalOrderPrice, VisitDate visitDate) {
         if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent()) && canApplyDDayDiscount(visitDate)) {
             return getDiscount(visitDate);
         }

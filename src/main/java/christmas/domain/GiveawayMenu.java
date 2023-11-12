@@ -9,11 +9,11 @@ public class GiveawayMenu {
     }
 
     public static GiveawayMenu from(Boolean canGiveawayEvent) {
-        Integer price = getChampagnePrice(canGiveawayEvent);
+        Integer price = applyDiscount(canGiveawayEvent);
         return new GiveawayMenu(price);
     }
 
-    private static Integer getChampagnePrice(Boolean canGiveawayEvent) {
+    private static Integer applyDiscount(Boolean canGiveawayEvent) {
         if (Boolean.TRUE.equals(canGiveawayEvent)) {
             return 25_000;
         }
