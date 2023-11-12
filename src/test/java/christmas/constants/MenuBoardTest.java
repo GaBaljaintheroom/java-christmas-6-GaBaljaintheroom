@@ -73,4 +73,18 @@ class MenuBoardTest {
         assertThat(actual).isEqualTo(86_500);
     }
 
+    @ParameterizedTest
+    @MethodSource("normalOrderSources")
+    @DisplayName("주문 메뉴개수가 각 카테고리별 메뉴들과 몇 개 일치하는지 계산한다.")
+    void Given_When_Then_(List<Menu> menus) {
+        //given
+        Menus orderMenus = Menus.from(menus);
+
+        //when
+        Long matchCount = MenuBoard.DESSERT_MENU.matchingOrderMenuCount(orderMenus);
+
+        //then
+        assertThat(matchCount).isEqualTo(1);
+    }
+
 }
