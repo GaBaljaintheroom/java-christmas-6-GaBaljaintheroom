@@ -50,12 +50,15 @@ public class ChristmasController {
         outputView.printToTalOrderPriceMessage(christmasService.checkTotalOrderPrice());
 
         christmasService.saveGiveawayMenu();
-        outputView.printGiveawayMenu(christmasService.checkGiveWayMenu());
+        outputView.printGiveawayMenuMessage(christmasService.checkGiveWayMenu());
 
         // 할인 저장
         christmasService.saveChristmasDDayDiscount();
         christmasService.saveDaysDiscount();
         christmasService.saveSpecialEventDiscount();
+
+        // 할인 내역 출력
+        outputView.printBenefitDetailsMessage(christmasService.showBenefitDetails());
     }
 
     private <T> T read(final Supplier<T> supplier) {

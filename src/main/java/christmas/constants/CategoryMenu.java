@@ -8,8 +8,8 @@ import java.util.List;
 
 public enum CategoryMenu {
     APPETIZER("에피타이저", MenuBoard.APPETIZER_MENU),
-    MAIN("메인", MenuBoard.BEVERAGE_MENU),
-    DESSERT("디저트", MenuBoard.BEVERAGE_MENU),
+    MAIN("메인", MenuBoard.MAIN_MENU),
+    DESSERT("디저트", MenuBoard.DESSERT_MENU),
     BEVERAGE("음료", MenuBoard.BEVERAGE_MENU);
 
 

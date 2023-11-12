@@ -70,9 +70,13 @@ public class Menus {
     }
 
     public Long matchingOrderMenuCount(Menus orderMenus) {
-        return orderMenus.getValues().stream()
-                .map(Menu::getMenuName)
-                .filter(this::isContainMenuName)
-                .count();
+        List<Menu> menusValues = orderMenus.getValues();
+
+        return values.stream()
+                .flatMap(menu -> menusValues.stream()
+                        .filter(orderMenu -> menu.getMenuName().equals(orderMenu.getMenuName()))
+                        .map(Menu::getMenuAmountValue))
+                .mapToLong(Integer::longValue)
+                .sum();
     }
 }

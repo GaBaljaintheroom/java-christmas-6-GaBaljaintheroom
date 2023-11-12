@@ -21,4 +21,7 @@ public class SpecialEventDiscount {
         return NO_DISCOUNT;
     }
 
+    public Integer getDiscount() {
+        return discount;
+    }
 }

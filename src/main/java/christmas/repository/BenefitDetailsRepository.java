@@ -32,6 +32,18 @@ public class BenefitDetailsRepository {
         this.giveawayMenu = giveawayMenu;
     }
 
+    public ChristmasDDayDiscount getChristMasDDayDiscount() {
+        return get(() -> this.christmasDDayDiscount);
+    }
+
+    public DaysDiscount getDaysDiscount() {
+        return get(() -> this.daysDiscount);
+    }
+
+    public SpecialEventDiscount getSpecialEventDiscount() {
+        return get(() -> this.specialEventDayDiscount);
+    }
+
     public GiveawayMenu getGiveawayMenu() {
         return get(() -> this.giveawayMenu);
     }

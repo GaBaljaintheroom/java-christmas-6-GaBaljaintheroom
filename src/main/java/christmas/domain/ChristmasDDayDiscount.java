@@ -29,4 +29,8 @@ public class ChristmasDDayDiscount {
         Integer additionalDiscount = (visitDate.getDayOfMonth() - 1) * 100;
         return baseDiscount + additionalDiscount;
     }
+
+    public Integer getDiscount() {
+        return discount;
+    }
 }

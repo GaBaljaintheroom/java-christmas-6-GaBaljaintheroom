@@ -4,6 +4,7 @@ import christmas.constants.DaysEventCategory;
 import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
 import christmas.domain.*;
+import christmas.formatter.BenefitDetailsFormatter;
 import christmas.formatter.GiveawayMenuFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
@@ -78,7 +79,7 @@ public class ChristmasService {
         Menus orderMenus = orderRepository.getOrderMenus();
 
         Integer discountPrice = DaysEventCategory.daysDiscount(visitDate, orderMenus);
-        DaysDiscount daysDiscount = DaysDiscount.from(totalOrderPrice, discountPrice);
+        DaysDiscount daysDiscount = DaysDiscount.from(totalOrderPrice, visitDate, discountPrice);
         benefitDetailsRepository.saveDaysDiscount(daysDiscount);
     }
 
@@ -91,5 +92,13 @@ public class ChristmasService {
         benefitDetailsRepository.saveSpecialEventDayDiscount(specialEventDiscount);
     }
 
+    public String showBenefitDetails() {
+        ChristmasDDayDiscount christMasDDayDiscount = benefitDetailsRepository.getChristMasDDayDiscount();
+        DaysDiscount daysDiscount = benefitDetailsRepository.getDaysDiscount();
+        SpecialEventDiscount specialEventDiscount = benefitDetailsRepository.getSpecialEventDiscount();
+        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+
+        return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
+    }
 
 }

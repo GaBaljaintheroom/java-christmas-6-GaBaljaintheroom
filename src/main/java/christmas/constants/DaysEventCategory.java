@@ -7,6 +7,7 @@ import christmas.exception.NotFoundCategoryMenuByDay;
 import java.util.Arrays;
 
 public enum DaysEventCategory {
+    SUNDAY("일요일", CategoryMenu.DESSERT),
     MONDAY("월요일", CategoryMenu.DESSERT),
     TUESDAY("화요일", CategoryMenu.DESSERT),
     WEDNESDAY("수요일", CategoryMenu.DESSERT),
@@ -37,4 +38,11 @@ public enum DaysEventCategory {
                 .orElseThrow(NotFoundCategoryMenuByDay::new);
     }
 
+    public static String distinctionDayType(VisitDate visitDate) {
+        String dayOfWeek = visitDate.getDayOfWeek();
+        if (FRIDAY.day.equals(dayOfWeek) || SATURDAY.day.equals(dayOfWeek)) {
+            return "주말";
+        }
+        return "평일";
+    }
 }

@@ -31,7 +31,11 @@ public class OutputView {
         System.out.println(checkTotalOrderPrice);
     }
 
-    public void printGiveawayMenu(String checkGiveawayMenu) {
+    public void printGiveawayMenuMessage(String checkGiveawayMenu) {
         System.out.println(checkGiveawayMenu);
+    }
+
+    public void printBenefitDetailsMessage(String showBenefitDetails) {
+        System.out.println(showBenefitDetails);
     }
 }
