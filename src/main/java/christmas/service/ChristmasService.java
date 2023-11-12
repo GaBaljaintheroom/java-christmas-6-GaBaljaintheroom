@@ -8,14 +8,17 @@ import christmas.domain.VisitDate;
 import christmas.formatter.GiveawayMenuFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
+import christmas.repository.BenefitDetailsRepository;
 import christmas.repository.ChristmasRepository;
 
 public class ChristmasService {
 
     private final ChristmasRepository christmasRepository;
+    private final BenefitDetailsRepository benefitDetailsRepository;
 
-    public ChristmasService(final ChristmasRepository christmasRepository) {
+    public ChristmasService(final ChristmasRepository christmasRepository, final BenefitDetailsRepository benefitDetailsRepository) {
         this.christmasRepository = christmasRepository;
+        this.benefitDetailsRepository = benefitDetailsRepository;
     }
 
     public void saveVisitDate(final VisitDate visitDate) {
@@ -59,6 +62,13 @@ public class ChristmasService {
     public String checkGiveWayMenu() {
         GiveawayMenu giveawayMenu = christmasRepository.getGiveawayMenu();
         return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
+    }
+
+    public void christmasDDayDiscount() {
+        VisitDate visitDate = christmasRepository.getVisitDate();
+        TotalOrderPrice totalOrderPrice = christmasRepository.getTotalOrderPrice();
+        Integer discountPrice = visitDate.christmasDDayDiscount(totalOrderPrice);
+        benefitDetailsRepository.saveChristmasDDayDiscount(discountPrice);
     }
 
 }
