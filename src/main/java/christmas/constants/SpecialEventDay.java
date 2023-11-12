@@ -1,6 +1,6 @@
 package christmas.constants;
 
-import christmas.domain.TotalOrderPrice;
+import christmas.domain.VisitDate;
 
 import java.util.Arrays;
 
@@ -18,14 +18,11 @@ public enum SpecialEventDay {
         this.day = day;
     }
 
-    public static Integer specialDayEventDiscount(TotalOrderPrice totalOrderPrice, Integer dayOfMonth) {
-        if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent())) {
-            return Arrays.stream(values())
-                    .filter(specialEventDay -> specialEventDay.day.equals(dayOfMonth))
-                    .findFirst()
-                    .map(specialEventDay -> 1_000)
-                    .orElse(0);
-        }
-        return 0;
+    public static Integer specialDayEventDiscount(VisitDate visitDate) {
+        return Arrays.stream(values())
+                .filter(specialEventDay -> specialEventDay.day.equals(visitDate.getDayOfMonth()))
+                .findFirst()
+                .map(specialEventDay -> 1_000)
+                .orElse(0);
     }
 }

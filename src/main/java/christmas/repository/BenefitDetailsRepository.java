@@ -3,6 +3,7 @@ package christmas.repository;
 import christmas.domain.ChristmasDDayDiscount;
 import christmas.domain.DaysDiscount;
 import christmas.domain.GiveawayMenu;
+import christmas.domain.SpecialEventDiscount;
 import christmas.exception.DomainNullException;
 
 import java.util.Optional;
@@ -12,7 +13,7 @@ public class BenefitDetailsRepository {
 
     private ChristmasDDayDiscount christmasDDayDiscount;
     private DaysDiscount daysDiscount;
-    private Integer specialEventDayDiscount;
+    private SpecialEventDiscount specialEventDayDiscount;
     private GiveawayMenu giveawayMenu;
 
     public void saveChristmasDDayDiscount(ChristmasDDayDiscount christmasDDayDiscount) {
@@ -23,7 +24,7 @@ public class BenefitDetailsRepository {
         this.daysDiscount = daysDiscount;
     }
 
-    public void saveSpecialEventDayDiscount(Integer specialEventDayDiscount) {
+    public void saveSpecialEventDayDiscount(SpecialEventDiscount specialEventDayDiscount) {
         this.specialEventDayDiscount = specialEventDayDiscount;
     }
 
