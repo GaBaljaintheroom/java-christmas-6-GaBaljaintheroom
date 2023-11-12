@@ -39,12 +39,14 @@ public class ChristmasService {
         return OrderMenuFormatter.showOrderMenus(orderMenus);
     }
 
-    public void saveTotalOrderPrice() {
+    public void saveOrderPrice() {
         Menus orderMenus = orderRepository.getOrderMenus();
         Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
         TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
+        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(totalOrderPrice);
 
         orderRepository.saveTotalOrderPrice(totalOrderPrice);
+        orderRepository.saveExpectOrderPrice(expectOrderPrice);
     }
 
     public String checkTotalOrderPrice() {
@@ -98,7 +100,12 @@ public class ChristmasService {
         SpecialEventDiscount specialEventDiscount = benefitDetailsRepository.getSpecialEventDiscount();
         GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
 
+        TotalBenefitPrice totalBenefitPrice = TotalBenefitPrice.from(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
+        benefitDetailsRepository.saveTotalBenefitPrice(totalBenefitPrice);
+
         return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
     }
+
+
 
 }
