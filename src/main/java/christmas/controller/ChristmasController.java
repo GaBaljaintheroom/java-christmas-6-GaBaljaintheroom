@@ -48,6 +48,9 @@ public class ChristmasController {
 
         christmasService.saveTotalOrderPrice();
         outputView.printToTalOrderPriceMessage(christmasService.checkTotalOrderPrice());
+
+        christmasService.saveGiveawayMenu();
+        outputView.printGiveawayMenu(christmasService.checkGiveWayMenu());
     }
 
     private <T> T read(final Supplier<T> supplier) {

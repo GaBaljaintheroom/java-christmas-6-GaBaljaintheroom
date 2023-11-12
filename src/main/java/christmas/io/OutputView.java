@@ -30,4 +30,8 @@ public class OutputView {
     public void printToTalOrderPriceMessage(String checkTotalOrderPrice) {
         System.out.println(checkTotalOrderPrice);
     }
+
+    public void printGiveawayMenu(String checkGiveawayMenu) {
+        System.out.println(checkGiveawayMenu);
+    }
 }
