@@ -35,22 +35,6 @@ public class VisitDate {
         return currentDate.getDayOfMonth();
     }
 
-    public Integer christmasDDayDiscount(TotalOrderPrice totalOrderPrice) {
-        int discount = 0;
-        if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent()) && canApplyDDayDiscount()) {
-            discount += 1000;
-            for (int i = 1; i < currentDate.getDayOfMonth(); i++) {
-                discount += 100;
-            }
-        }
-        return discount;
-    }
-
-    private boolean canApplyDDayDiscount() {
-        int day = currentDate.getDayOfMonth();
-        return day <= 25;
-    }
-
     public String getDayOfWeek() {
         return currentDate.getDayOfWeek()
                 .getDisplayName(TextStyle.FULL, Locale.KOREAN);

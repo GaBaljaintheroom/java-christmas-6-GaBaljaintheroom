@@ -3,10 +3,7 @@ package christmas.service;
 import christmas.constants.DaysEventCategory;
 import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
-import christmas.domain.GiveawayMenu;
-import christmas.domain.Menus;
-import christmas.domain.TotalOrderPrice;
-import christmas.domain.VisitDate;
+import christmas.domain.*;
 import christmas.formatter.GiveawayMenuFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
@@ -66,11 +63,12 @@ public class ChristmasService {
         return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
     }
 
-    public void christmasDDayDiscount() {
+    public void saveChristmasDDayDiscount() {
         VisitDate visitDate = orderRepository.getVisitDate();
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
-        Integer discountPrice = visitDate.christmasDDayDiscount(totalOrderPrice);
-        benefitDetailsRepository.saveChristmasDDayDiscount(discountPrice);
+
+        ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice, visitDate);
+        benefitDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
     }
 
     public void daysDiscount() {

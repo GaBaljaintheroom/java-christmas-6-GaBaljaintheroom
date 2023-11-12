@@ -32,32 +32,6 @@ class VisitDateTest {
     }
 
     @Test
-    @DisplayName("크리스마스 디데이 할인을 적용시킨다.")
-    void Given_CreateVisitDate_When_ChristmasDDayDiscount_Then_EqualActual() {
-        //given
-        VisitDate visitDate = VisitDate.from(3);
-
-        //when
-        Integer actual = visitDate.christmasDDayDiscount(TotalOrderPrice.from(10_000));
-
-        //then
-        assertThat(actual).isEqualTo(1_200);
-    }
-
-    @Test
-    @DisplayName("25일 이후는 크리스마스 디데이 할인을 적용시키지 못한다.")
-    void Given_CreateVisitDateOver25_When_ChristmasDDayDiscount_Then_NotApply() {
-        //given
-        VisitDate visitDate = VisitDate.from(30);
-
-        //when
-        Integer actual = visitDate.christmasDDayDiscount(TotalOrderPrice.from(10_000));
-
-        //then
-        assertThat(actual).isZero();
-    }
-
-    @Test
     @DisplayName("방문 날짜의 요일을 구한다.")
     void Given_CreateVisitDate_When_GetDayOfWeek_Then_EqualActual() {
         VisitDate visitDate = VisitDate.from(3);
