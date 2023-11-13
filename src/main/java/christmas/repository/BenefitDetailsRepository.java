@@ -17,11 +17,11 @@ public class BenefitDetailsRepository {
     private GiveawayMenu giveawayMenu;
     private TotalDiscountPrice totalDiscountPrice;
 
-    public void saveChristmasDDayDiscount(ChristmasDDayDiscount christmasDDayDiscount) {
+    public void saveChristmasDDayDiscount(final ChristmasDDayDiscount christmasDDayDiscount) {
         this.christmasDDayDiscount = christmasDDayDiscount;
     }
 
-    public void saveDaysDiscount(DaysDiscount daysDiscount) {
+    public void saveDaysDiscount(final DaysDiscount daysDiscount) {
         this.daysDiscount = daysDiscount;
     }
 

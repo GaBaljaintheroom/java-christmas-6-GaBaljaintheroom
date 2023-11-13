@@ -69,7 +69,7 @@ public enum MenuBoard {
         return menus;
     }
 
-    public Long matchingOrderMenuCount(Menus orderMenus) {
+    public Long matchingOrderMenuCount(final Menus orderMenus) {
         return this.menus.matchingOrderMenuCount(orderMenus);
     }
 }

@@ -64,7 +64,7 @@ public class Menus {
                 .sum();
     }
 
-    public Long matchingOrderMenuCount(Menus orderMenus) {
+    public Long matchingOrderMenuCount(final Menus orderMenus) {
         List<Menu> menusValues = orderMenus.getValues();
 
         return values.stream()

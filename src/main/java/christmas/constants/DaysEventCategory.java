@@ -15,6 +15,8 @@ public enum DaysEventCategory {
     SATURDAY("토요일", CategoryMenu.MAIN);
 
     private static final Integer DISCOUNT_AMOUNT = 2_023;
+    private static final String WEEKEND = "주말";
+    private static final String WEEKDAY = "평일";
     private final String day;
     private final CategoryMenu categoryMenu;
 
@@ -23,13 +25,13 @@ public enum DaysEventCategory {
         this.categoryMenu = categoryMenu;
     }
 
-    public static Integer daysDiscount(VisitDate visitDate, Menus orderMenus) {
+    public static Integer daysDiscount(final VisitDate visitDate, final Menus orderMenus) {
         CategoryMenu categoryMenuByDay = findCategoryMenuByDay(visitDate.getDayOfWeek());
         Long discountMenuCount = categoryMenuByDay.getDiscountMenuCount(orderMenus);
         return discountMenuCount.intValue() * DISCOUNT_AMOUNT;
     }
 
-    private static CategoryMenu findCategoryMenuByDay(String dayOfWeek) {
+    private static CategoryMenu findCategoryMenuByDay(final String dayOfWeek) {
         return Arrays.stream(values())
                 .filter(daysEventMenu -> daysEventMenu.day.equals(dayOfWeek))
                 .findFirst()
@@ -37,11 +39,11 @@ public enum DaysEventCategory {
                 .orElseThrow(NotFoundCategoryMenuByDay::new);
     }
 
-    public static String distinctionDayType(VisitDate visitDate) {
+    public static String distinctionDayType(final VisitDate visitDate) {
         String dayOfWeek = visitDate.getDayOfWeek();
         if (FRIDAY.day.equals(dayOfWeek) || SATURDAY.day.equals(dayOfWeek)) {
-            return "주말";
+            return WEEKEND;
         }
-        return "평일";
+        return WEEKDAY;
     }
 }

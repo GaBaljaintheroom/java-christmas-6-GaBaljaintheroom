@@ -69,8 +69,7 @@ public class ChristmasService {
         VisitDate visitDate = orderRepository.getVisitDate();
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
-        ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice,
-                visitDate);
+        ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice, visitDate);
         benefitDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
     }
 
