@@ -5,9 +5,10 @@ import christmas.io.InputManager;
 import christmas.io.InputMapper;
 import christmas.io.InputView;
 import christmas.io.OutputView;
-import christmas.repository.BenefitDetailsRepository;
+import christmas.repository.EventDetailsRepository;
 import christmas.repository.OrderRepository;
-import christmas.service.ChristmasService;
+import christmas.service.EventDetailService;
+import christmas.service.OrderService;
 import christmas.validator.InputValidator;
 
 public enum ChristmasFactory {
@@ -16,8 +17,7 @@ public enum ChristmasFactory {
     private final ChristmasController christmasController;
 
     ChristmasFactory() {
-        this.christmasController = new ChristmasController(inputManger(), outputView(),
-                christmasService());
+        this.christmasController = new ChristmasController(inputManger(), outputView(), orderService(), eventDetailService());
     }
 
     public ChristmasController christmasController() {
@@ -44,15 +44,19 @@ public enum ChristmasFactory {
         return new OutputView();
     }
 
-    private ChristmasService christmasService() {
-        return new ChristmasService(orderRepository(), benefitDetailsRepository());
+    private OrderService orderService() {
+        return new OrderService(orderRepository(), benefitDetailsRepository());
+    }
+
+    private EventDetailService eventDetailService() {
+        return new EventDetailService(orderRepository(), benefitDetailsRepository());
     }
 
     private OrderRepository orderRepository() {
-        return new OrderRepository();
+        return OrderRepository.INSTANCE;
     }
 
-    private BenefitDetailsRepository benefitDetailsRepository() {
-        return new BenefitDetailsRepository();
+    private EventDetailsRepository benefitDetailsRepository() {
+        return EventDetailsRepository.INSTANCE;
     }
 }

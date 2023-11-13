@@ -4,21 +4,24 @@ import christmas.domain.Menus;
 import christmas.domain.VisitDate;
 import christmas.io.InputManager;
 import christmas.io.OutputView;
-import christmas.service.ChristmasService;
+import christmas.service.EventDetailService;
+import christmas.service.OrderService;
 import java.util.function.Supplier;
 
 public class ChristmasController {
 
     private final InputManager inputManager;
     private final OutputView outputView;
-    private final ChristmasService christmasService;
+    private final OrderService orderService;
+    private final EventDetailService eventDetailService;
 
 
     public ChristmasController(final InputManager inputManager, final OutputView outputView,
-                               final ChristmasService christmasService) {
+                               final OrderService orderService, final EventDetailService eventDetailService) {
         this.inputManager = inputManager;
         this.outputView = outputView;
-        this.christmasService = christmasService;
+        this.orderService = orderService;
+        this.eventDetailService = eventDetailService;
     }
 
     public void run() {
@@ -35,40 +38,40 @@ public class ChristmasController {
     private void createVisitDate() {
         outputView.printVisitDateMessage();
         VisitDate visitDate = read(inputManager::inputVisitDate);
-        christmasService.saveVisitDate(visitDate);
+        orderService.saveVisitDate(visitDate);
     }
 
     private void orderMenus() {
         outputView.printOrderMenuMessage();
         Menus orderMenus = read(inputManager::inputOrderMenus);
-        String checkOrderMenus = christmasService.checkOrderMenus(orderMenus);
+        String checkOrderMenus = orderService.checkOrderMenus(orderMenus);
 
-        outputView.printPreviewEventMessage(christmasService.getVisitDate());
+        outputView.printPreviewEventMessage(orderService.getVisitDate());
         outputView.printPreviewEventCase(checkOrderMenus);
     }
 
     private void checkTotalOrderPrice() {
-        String totalOrderPrice = christmasService.checkTotalOrderPrice();
+        String totalOrderPrice = orderService.checkTotalOrderPrice();
         outputView.printPreviewEventCase(totalOrderPrice);
     }
 
     private void checkGiveawayEvent() {
-        String giveawayMenuEvent = christmasService.showGiveawayMenuEvent();
+        String giveawayMenuEvent = eventDetailService.showGiveawayMenuEvent();
         outputView.printPreviewEventCase(giveawayMenuEvent);
     }
 
     private void checkBenefitDetails() {
-        christmasService.saveChristmasDDayDiscount();
-        christmasService.saveDaysDiscount();
-        christmasService.saveSpecialEventDiscount();
+        eventDetailService.saveChristmasDDayDiscount();
+        eventDetailService.saveDaysDiscount();
+        eventDetailService.saveSpecialEventDiscount();
 
-        outputView.printPreviewEventCase(christmasService.showBenefitDetails());
+        outputView.printPreviewEventCase(eventDetailService.showBenefitDetails());
     }
 
     private void checkPaymentAndBadge() {
-        outputView.printPreviewEventCase(christmasService.showTotalBenefitPrice());
-        outputView.printPreviewEventCase(christmasService.checkExpectPaymentPrice());
-        outputView.printPreviewEventCase(christmasService.showEventBadge());
+        outputView.printPreviewEventCase(eventDetailService.showTotalBenefitPrice());
+        outputView.printPreviewEventCase(orderService.checkExpectPaymentPrice());
+        outputView.printPreviewEventCase(eventDetailService.showEventBadge());
     }
 
     private <T> T read(final Supplier<T> supplier) {

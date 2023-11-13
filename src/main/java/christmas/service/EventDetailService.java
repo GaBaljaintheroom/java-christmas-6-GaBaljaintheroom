@@ -2,11 +2,9 @@ package christmas.service;
 
 import christmas.constants.DaysEventCategory;
 import christmas.constants.EventBadge;
-import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
 import christmas.domain.ChristmasDDayDiscount;
 import christmas.domain.DaysDiscount;
-import christmas.domain.ExpectOrderPrice;
 import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
 import christmas.domain.SpecialEventDiscount;
@@ -15,46 +13,19 @@ import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
 import christmas.formatter.BenefitDetailsFormatter;
 import christmas.formatter.EventBadgeFormatter;
-import christmas.formatter.ExpectOrderPriceFormatter;
 import christmas.formatter.GiveawayMenuFormatter;
-import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalBenefitPriceFormatter;
-import christmas.formatter.TotalOrderPriceFormatter;
-import christmas.repository.BenefitDetailsRepository;
+import christmas.repository.EventDetailsRepository;
 import christmas.repository.OrderRepository;
 
-public class ChristmasService {
+public class EventDetailService {
 
     private final OrderRepository orderRepository;
-    private final BenefitDetailsRepository benefitDetailsRepository;
+    private final EventDetailsRepository benefitDetailsRepository;
 
-    public ChristmasService(final OrderRepository orderRepository,
-                            final BenefitDetailsRepository benefitDetailsRepository) {
+    public EventDetailService(OrderRepository orderRepository, EventDetailsRepository benefitDetailsRepository) {
         this.orderRepository = orderRepository;
         this.benefitDetailsRepository = benefitDetailsRepository;
-    }
-
-    public void saveVisitDate(final VisitDate visitDate) {
-        orderRepository.saveVisitDate(visitDate);
-    }
-
-    public String checkOrderMenus(final Menus orderMenus) {
-        orderRepository.saveOrderMenus(orderMenus);
-        return OrderMenuFormatter.showOrderMenus(orderMenus);
-    }
-
-    public Integer getVisitDate() {
-        VisitDate visitDate = orderRepository.getVisitDate();
-        return visitDate.getDayOfMonth();
-    }
-
-    public String checkTotalOrderPrice() {
-        Menus orderMenus = orderRepository.getOrderMenus();
-        Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
-        TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
-
-        orderRepository.saveTotalOrderPrice(totalOrderPrice);
-        return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
     }
 
     public String showGiveawayMenuEvent() {
@@ -113,22 +84,10 @@ public class ChristmasService {
         return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalDiscountPrice, giveawayMenu);
     }
 
-    public String checkExpectPaymentPrice() {
-        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
-        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-
-        Integer price = totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
-        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(price);
-
-        orderRepository.saveExpectOrderPrice(expectOrderPrice);
-        return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
-    }
-
     public String showEventBadge() {
         TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
         GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
         String badge = EventBadge.getBadgeByTotalBenefitPrice(totalDiscountPrice, giveawayMenu);
         return EventBadgeFormatter.showEventBadge(badge);
     }
-
 }
