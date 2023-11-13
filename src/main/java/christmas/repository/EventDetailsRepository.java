@@ -9,7 +9,9 @@ import christmas.exception.DomainNullException;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class BenefitDetailsRepository {
+public enum EventDetailsRepository {
+
+    INSTANCE;
 
     private ChristmasDDayDiscount christmasDDayDiscount;
     private DaysDiscount daysDiscount;
