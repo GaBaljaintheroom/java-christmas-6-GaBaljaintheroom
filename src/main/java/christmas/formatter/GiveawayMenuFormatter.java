@@ -13,7 +13,7 @@ public final class GiveawayMenuFormatter {
     private GiveawayMenuFormatter() {
     }
 
-    public static String showGiveawayMenu(GiveawayMenu giveawayMenu) {
+    public static String showGiveawayMenu(final GiveawayMenu giveawayMenu) {
         sb.append(GIVEAWAY_MENU);
 
         Integer orderPrice = giveawayMenu.getPrice();
@@ -23,13 +23,13 @@ public final class GiveawayMenuFormatter {
         return sb.toString();
     }
 
-    private static void appendChampagne(Integer orderPrice) {
+    private static void appendChampagne(final Integer orderPrice) {
         if (orderPrice.equals(CHAMPAGNE_PRICE)) {
             sb.append(ONE_CHAMPAGNE);
         }
     }
 
-    private static void appendNone(Integer orderPrice) {
+    private static void appendNone(final Integer orderPrice) {
         if (!orderPrice.equals(CHAMPAGNE_PRICE)) {
             sb.append(NONE);
         }

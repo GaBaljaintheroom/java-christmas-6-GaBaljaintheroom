@@ -27,8 +27,8 @@ public class ChristmasController {
         createVisitDate();
         orderMenus();
         checkTotalOrderPrice();
+        checkGiveawayEvent();
         previewEventBenefit();
-
     }
 
     private void createVisitDate() {
@@ -51,9 +51,12 @@ public class ChristmasController {
         outputView.printPreviewEventCase(totalOrderPrice);
     }
 
+    private void checkGiveawayEvent() {
+        String giveawayMenuEvent = christmasService.showGiveawayMenuEvent();
+        outputView.printPreviewEventCase(giveawayMenuEvent);
+    }
+
     private void previewEventBenefit() {
-        christmasService.saveGiveawayMenu();
-        outputView.printGiveawayMenuMessage(christmasService.checkGiveWayMenu());
 
         // 혜택 저장
         christmasService.saveChristmasDDayDiscount();

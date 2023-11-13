@@ -42,15 +42,11 @@ public class ChristmasService {
         return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
     }
 
-    public void saveGiveawayMenu() {
+    public String showGiveawayMenuEvent() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         GiveawayMenu giveawayMenu = GiveawayMenu.from(totalOrderPrice.canGiveawayEvent());
         benefitDetailsRepository.saveGiveawayMenu(giveawayMenu);
 
-    }
-
-    public String checkGiveWayMenu() {
-        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
         return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
     }
 

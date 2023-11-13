@@ -1,6 +1,8 @@
 package christmas.domain;
 
 public class GiveawayMenu {
+    private static final Integer CHAMPAGNE_PRICE = 25_000;
+    private static final Integer NO_CHAMPAGNE = 0;
 
     private final Integer price;
 
@@ -8,16 +10,16 @@ public class GiveawayMenu {
         this.price = price;
     }
 
-    public static GiveawayMenu from(Boolean canGiveawayEvent) {
+    public static GiveawayMenu from(final Boolean canGiveawayEvent) {
         Integer price = applyDiscount(canGiveawayEvent);
         return new GiveawayMenu(price);
     }
 
-    private static Integer applyDiscount(Boolean canGiveawayEvent) {
+    private static Integer applyDiscount(final Boolean canGiveawayEvent) {
         if (Boolean.TRUE.equals(canGiveawayEvent)) {
-            return 25_000;
+            return CHAMPAGNE_PRICE;
         }
-        return 0;
+        return NO_CHAMPAGNE;
     }
 
     public Integer getPrice() {
