@@ -62,7 +62,7 @@ public class ChristmasController {
         christmasService.saveDaysDiscount();
         christmasService.saveSpecialEventDiscount();
 
-        outputView.printBenefitDetailsMessage(christmasService.showBenefitDetails());
+        outputView.printPreviewEventCase(christmasService.showBenefitDetails());
     }
 
     private void checkPaymentAndBadge() {

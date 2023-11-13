@@ -27,28 +27,4 @@ public class OutputView {
     public void printPreviewEventCase(final String eventCase) {
         System.out.println(eventCase);
     }
-
-    public void printToTalOrderPriceMessage(String checkTotalOrderPrice) {
-        System.out.println(checkTotalOrderPrice);
-    }
-
-    public void printGiveawayMenuMessage(String checkGiveawayMenu) {
-        System.out.println(checkGiveawayMenu);
-    }
-
-    public void printBenefitDetailsMessage(String showBenefitDetails) {
-        System.out.println(showBenefitDetails);
-    }
-
-    public void printTotalBenefitPrice(String showTotalBenefitPrice) {
-        System.out.println(showTotalBenefitPrice);
-    }
-
-    public void printExpectOrderPrice(String showExpectOrderPrice) {
-        System.out.println(showExpectOrderPrice);
-    }
-
-    public void printEventBadge(String showEventBadge) {
-        System.out.println(showEventBadge);
-    }
 }
