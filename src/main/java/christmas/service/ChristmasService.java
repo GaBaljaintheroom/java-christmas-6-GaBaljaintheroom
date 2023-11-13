@@ -23,8 +23,9 @@ public class ChristmasService {
         orderRepository.saveVisitDate(visitDate);
     }
 
-    public void saveOrderMenus(final Menus orderMenus) {
+    public String checkOrderMenus(final Menus orderMenus) {
         orderRepository.saveOrderMenus(orderMenus);
+        return OrderMenuFormatter.showOrderMenus(orderMenus);
     }
 
     public Integer getVisitDate() {
@@ -32,21 +33,12 @@ public class ChristmasService {
         return visitDate.getDayOfMonth();
     }
 
-    public String checkOrderMenu() {
-        Menus orderMenus = orderRepository.getOrderMenus();
-        return OrderMenuFormatter.showOrderMenus(orderMenus);
-    }
-
-    public void saveTotalOrderPrice() {
+    public String checkTotalOrderPrice() {
         Menus orderMenus = orderRepository.getOrderMenus();
         Integer orderPrice = MenuBoard.calculateTotalOrderPrice(orderMenus);
         TotalOrderPrice totalOrderPrice = TotalOrderPrice.from(orderPrice);
 
         orderRepository.saveTotalOrderPrice(totalOrderPrice);
-    }
-
-    public String checkTotalOrderPrice() {
-        TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         return TotalOrderPriceFormatter.showTotalOrderPrice(totalOrderPrice);
     }
 

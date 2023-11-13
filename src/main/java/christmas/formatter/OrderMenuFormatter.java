@@ -12,14 +12,14 @@ public final class OrderMenuFormatter {
     private OrderMenuFormatter() {
     }
 
-    public static String showOrderMenus(Menus orderMenus) {
+    public static String showOrderMenus(final Menus orderMenus) {
         sb.append(ORDER_MENU);
         orderMenus.getValues()
                 .forEach(OrderMenuFormatter::getAppend);
         return sb.toString();
     }
 
-    private static void getAppend(Menu menu) {
+    private static void getAppend(final Menu menu) {
         sb.append(String.format(ORDER_MENU_FORM, menu.getMenuNameValue(), menu.getMenuAmountValue()));
     }
 }

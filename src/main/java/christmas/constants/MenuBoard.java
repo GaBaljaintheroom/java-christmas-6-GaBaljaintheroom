@@ -50,14 +50,15 @@ public enum MenuBoard {
                         .anyMatch(menuBoard -> menuBoard.menus.isContainMenuName(name)));
     }
 
-    public static Integer calculateTotalOrderPrice(Menus orderMenus) {
+    public static Integer calculateTotalOrderPrice(final Menus orderMenus) {
         return orderMenus.getValues().stream()
                 .mapToInt(MenuBoard::calculateMenuPrice)
                 .sum();
     }
 
-    private static Integer calculateMenuPrice(Menu orderMenu) {
+    private static Integer calculateMenuPrice(final Menu orderMenu) {
         return Stream.of(MenuBoard.values())
+                .parallel()
                 .filter(menuBoard -> menuBoard.menus.isContainMenuName(orderMenu.getMenuName()))
                 .findFirst()
                 .map(menuBoard -> menuBoard.menus.getPriceValueByMenuName(orderMenu))

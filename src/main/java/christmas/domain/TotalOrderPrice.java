@@ -6,11 +6,11 @@ public class TotalOrderPrice {
     private static final Integer EVENT_APPLIED_PRICE = 10_000;
     private final Integer orderPrice;
 
-    private TotalOrderPrice(Integer orderPrice) {
+    private TotalOrderPrice(final Integer orderPrice) {
         this.orderPrice = orderPrice;
     }
 
-    public static TotalOrderPrice from(Integer orderPrice) {
+    public static TotalOrderPrice from(final Integer orderPrice) {
         return new TotalOrderPrice(orderPrice);
     }
 
