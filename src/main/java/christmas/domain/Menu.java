@@ -27,7 +27,7 @@ public class Menu {
         return new Menu(name, amount);
     }
 
-    public boolean isEqualName(Name name) {
+    public boolean isEqualName(final Name name) {
         return menuName.equals(name);
     }
 

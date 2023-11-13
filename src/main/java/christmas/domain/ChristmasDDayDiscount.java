@@ -9,7 +9,7 @@ public class ChristmasDDayDiscount {
     private static final Integer NO_DISCOUNT = 0;
     private final Integer discount;
 
-    private ChristmasDDayDiscount(Integer discount) {
+    private ChristmasDDayDiscount(final Integer discount) {
         this.discount = discount;
     }
 

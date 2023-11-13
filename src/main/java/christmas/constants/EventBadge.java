@@ -14,7 +14,7 @@ public enum EventBadge {
     private final String badge;
     private final Integer totalBenefitPrice;
 
-    EventBadge(String badge, Integer totalBenefitPrice) {
+    EventBadge(final String badge, final Integer totalBenefitPrice) {
         this.badge = badge;
         this.totalBenefitPrice = totalBenefitPrice;
     }

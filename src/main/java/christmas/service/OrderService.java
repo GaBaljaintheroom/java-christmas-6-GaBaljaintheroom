@@ -1,14 +1,11 @@
 package christmas.service;
 
-import christmas.constants.EventBadge;
 import christmas.constants.MenuBoard;
 import christmas.domain.ExpectOrderPrice;
-import christmas.domain.GiveawayMenu;
 import christmas.domain.Menus;
 import christmas.domain.TotalDiscountPrice;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
-import christmas.formatter.EventBadgeFormatter;
 import christmas.formatter.ExpectOrderPriceFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
@@ -58,13 +55,6 @@ public class OrderService {
 
         orderRepository.saveExpectOrderPrice(expectOrderPrice);
         return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
-    }
-
-    public String showEventBadge() {
-        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
-        String badge = EventBadge.getBadgeByTotalBenefitPrice(totalDiscountPrice, giveawayMenu);
-        return EventBadgeFormatter.showEventBadge(badge);
     }
 
 }

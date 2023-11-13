@@ -23,7 +23,8 @@ public class EventDetailService {
     private final OrderRepository orderRepository;
     private final EventDetailsRepository benefitDetailsRepository;
 
-    public EventDetailService(OrderRepository orderRepository, EventDetailsRepository benefitDetailsRepository) {
+    public EventDetailService(final OrderRepository orderRepository,
+                              final EventDetailsRepository benefitDetailsRepository) {
         this.orderRepository = orderRepository;
         this.benefitDetailsRepository = benefitDetailsRepository;
     }

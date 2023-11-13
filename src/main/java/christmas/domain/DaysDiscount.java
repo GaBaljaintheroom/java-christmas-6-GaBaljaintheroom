@@ -8,7 +8,7 @@ public class DaysDiscount {
     private final Integer discount;
     private final String dayType;
 
-    private DaysDiscount(Integer discount, String dayType) {
+    private DaysDiscount(final Integer discount, final String dayType) {
         this.discount = discount;
         this.dayType = dayType;
     }

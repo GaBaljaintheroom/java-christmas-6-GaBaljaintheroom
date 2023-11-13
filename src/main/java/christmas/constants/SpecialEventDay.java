@@ -15,7 +15,7 @@ public enum SpecialEventDay {
     private static final Integer NO_DISCOUNT = 0;
     private final Integer day;
 
-    SpecialEventDay(Integer day) {
+    SpecialEventDay(final Integer day) {
         this.day = day;
     }
 

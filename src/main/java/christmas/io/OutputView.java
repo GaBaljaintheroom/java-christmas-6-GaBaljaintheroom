@@ -20,7 +20,7 @@ public class OutputView {
         System.out.println(ProgressMessage.ORDER_MENU_MESSAGE);
     }
 
-    public void printPreviewEventMessage(Integer visitDate) {
+    public void printPreviewEventMessage(final Integer visitDate) {
         System.out.printf((ProgressMessage.PREVIEW_EVENT_MESSAGE) + "%n", visitDate);
     }
 

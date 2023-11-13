@@ -11,7 +11,7 @@ public final class TotalOrderPriceFormatter {
     private TotalOrderPriceFormatter() {
     }
 
-    public static String showTotalOrderPrice(TotalOrderPrice totalOrderPrice) {
+    public static String showTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
         Integer orderPrice = totalOrderPrice.getOrderPrice();
         sb.append(TOTAL_ORDER_PRICE)
                 .append(String.format(TOTAL_ORDER_PRICE_FORM, orderPrice));

@@ -5,7 +5,7 @@ public class SpecialEventDiscount {
     private static final Integer NO_DISCOUNT = 0;
     private final Integer discount;
 
-    private SpecialEventDiscount(Integer discount) {
+    private SpecialEventDiscount(final Integer discount) {
         this.discount = discount;
     }
 

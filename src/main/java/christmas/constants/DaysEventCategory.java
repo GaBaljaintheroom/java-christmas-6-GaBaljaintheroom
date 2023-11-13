@@ -20,7 +20,7 @@ public enum DaysEventCategory {
     private final String day;
     private final CategoryMenu categoryMenu;
 
-    DaysEventCategory(String day, CategoryMenu categoryMenu) {
+    DaysEventCategory(final String day, final CategoryMenu categoryMenu) {
         this.day = day;
         this.categoryMenu = categoryMenu;
     }

@@ -7,7 +7,7 @@ public class GiveawayMenu {
 
     private final Integer price;
 
-    private GiveawayMenu(Integer price) {
+    private GiveawayMenu(final Integer price) {
         this.price = price;
     }
 

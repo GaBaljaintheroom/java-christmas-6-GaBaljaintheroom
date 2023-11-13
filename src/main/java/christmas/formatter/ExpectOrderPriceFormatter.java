@@ -11,7 +11,7 @@ public final class ExpectOrderPriceFormatter {
     private ExpectOrderPriceFormatter() {
     }
 
-    public static String showExpectOrderPrice(ExpectOrderPrice expectOrderPrice) {
+    public static String showExpectOrderPrice(final ExpectOrderPrice expectOrderPrice) {
         sb.append(EXPECT_ORDER_PRICE)
                 .append(String.format(EXPECT_ORDER_PRICE_FORM, expectOrderPrice.getExpectPrice()));
         return sb.toString();

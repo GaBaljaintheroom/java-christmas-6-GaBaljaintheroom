@@ -32,7 +32,7 @@ public enum MenuBoard {
 
     private final Menus menus;
 
-    MenuBoard(Menus menus) {
+    MenuBoard(final Menus menus) {
         this.menus = menus;
     }
 

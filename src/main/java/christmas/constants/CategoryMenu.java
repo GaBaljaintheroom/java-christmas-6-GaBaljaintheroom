@@ -15,7 +15,7 @@ public enum CategoryMenu {
     private final String category;
     private final MenuBoard menuBoard;
 
-    CategoryMenu(String category, MenuBoard menuBoard) {
+    CategoryMenu(final String category, final MenuBoard menuBoard) {
         this.category = category;
         this.menuBoard = menuBoard;
     }

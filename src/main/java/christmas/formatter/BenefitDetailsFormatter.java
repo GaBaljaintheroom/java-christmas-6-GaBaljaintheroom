@@ -38,13 +38,16 @@ public final class BenefitDetailsFormatter {
                                        final DaysDiscount daysDiscount,
                                        final SpecialEventDiscount specialEventDiscount,
                                        final GiveawayMenu giveawayMenu) {
-        if (getTotalDiscount(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu).equals(NO_DISCOUNT)) {
+        if (getTotalDiscount(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu).equals(
+                NO_DISCOUNT)) {
             sb.append(NONE);
         }
     }
 
-    private static Integer getTotalDiscount(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount,
-                                            SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
+    private static Integer getTotalDiscount(final ChristmasDDayDiscount christMasDDayDiscount,
+                                            final DaysDiscount daysDiscount,
+                                            final SpecialEventDiscount specialEventDiscount,
+                                            final GiveawayMenu giveawayMenu) {
         return christMasDDayDiscount.getDiscount() + daysDiscount.getDiscount()
                 + specialEventDiscount.getDiscount() + giveawayMenu.getPrice();
     }

@@ -4,7 +4,7 @@ public class TotalDiscountPrice {
 
     private final Integer discountPrice;
 
-    private TotalDiscountPrice(Integer price) {
+    private TotalDiscountPrice(final Integer price) {
         this.discountPrice = price;
     }
 
