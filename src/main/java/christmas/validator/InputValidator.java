@@ -18,6 +18,7 @@ public class InputValidator {
 
     public void validateOrderPattern(final String order) {
         Arrays.stream(order.split(DIVISION))
+                .parallel()
                 .filter(InputPattern::isNotOrderPattern)
                 .findAny()
                 .ifPresent(o -> {
