@@ -19,9 +19,9 @@ public enum EventBadge {
         this.totalBenefitPrice = totalBenefitPrice;
     }
 
-    public static String getBadgeByTotalBenefitPrice(TotalDiscountPrice totalDiscountPrice,
-                                                     GiveawayMenu giveawayMenu) {
-        int totalBenefitPrice = totalDiscountPrice.getDiscountPrice() + giveawayMenu.getPrice();
+    public static String getBadgeByTotalBenefitPrice(final TotalDiscountPrice totalDiscountPrice,
+                                                     final GiveawayMenu giveawayMenu) {
+        Integer totalBenefitPrice = totalDiscountPrice.getDiscountPrice() + giveawayMenu.getPrice();
         return Arrays.stream(values())
                 .filter(eventBadge -> eventBadge.totalBenefitPrice <= totalBenefitPrice)
                 .findFirst()

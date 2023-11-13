@@ -29,7 +29,7 @@ public class ChristmasController {
         checkTotalOrderPrice();
         checkGiveawayEvent();
         checkBenefitDetails();
-        previewEventBenefit();
+        checkPaymentAndBadge();
     }
 
     private void createVisitDate() {
@@ -65,19 +65,10 @@ public class ChristmasController {
         outputView.printBenefitDetailsMessage(christmasService.showBenefitDetails());
     }
 
-    private void previewEventBenefit() {
-
-        // 총 혜택 금액 출력
-        outputView.printTotalBenefitPrice(christmasService.showTotalBenefitPrice());
-
-        // 할인 후 예상 결제 금액 저장
-        christmasService.saveExpectOrderPrice();
-
-        // 할인 후 예상 결제 출력
-        outputView.printExpectOrderPrice(christmasService.showExpectOrderPrice());
-
-        // 12월 이벤트 배지 출력
-        outputView.printEventBadge(christmasService.showEventBadge());
+    private void checkPaymentAndBadge() {
+        outputView.printPreviewEventCase(christmasService.showTotalBenefitPrice());
+        outputView.printPreviewEventCase(christmasService.checkExpectPaymentPrice());
+        outputView.printPreviewEventCase(christmasService.showEventBadge());
     }
 
     private <T> T read(final Supplier<T> supplier) {

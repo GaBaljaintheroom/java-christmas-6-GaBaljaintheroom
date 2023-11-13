@@ -8,7 +8,7 @@ public class ExpectOrderPrice {
         this.expectPrice = orderPrice;
     }
 
-    public static ExpectOrderPrice from(Integer expectOrderPrice) {
+    public static ExpectOrderPrice from(final Integer expectOrderPrice) {
         return new ExpectOrderPrice(expectOrderPrice);
     }
 

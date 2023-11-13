@@ -113,17 +113,14 @@ public class ChristmasService {
         return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalDiscountPrice, giveawayMenu);
     }
 
-    public void saveExpectOrderPrice() {
+    public String checkExpectPaymentPrice() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-        int expectOrderPrice =
-                totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
 
-        orderRepository.saveExpectOrderPrice(ExpectOrderPrice.from(expectOrderPrice));
-    }
+        Integer price = totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
+        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(price);
 
-    public String showExpectOrderPrice() {
-        ExpectOrderPrice expectOrderPrice = orderRepository.getExpectOrderPrice();
+        orderRepository.saveExpectOrderPrice(expectOrderPrice);
         return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
     }
 

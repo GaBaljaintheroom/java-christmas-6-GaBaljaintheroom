@@ -8,7 +8,7 @@ public final class EventBadgeFormatter {
     private EventBadgeFormatter() {
     }
 
-    public static String showEventBadge(String badge) {
+    public static String showEventBadge(final String badge) {
         sb.append(EVENT_BADGE)
                 .append(badge)
                 .append("\n");

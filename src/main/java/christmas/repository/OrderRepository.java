@@ -23,11 +23,11 @@ public class OrderRepository {
         this.orderMenus = orderMenus;
     }
 
-    public void saveTotalOrderPrice(TotalOrderPrice totalOrderPrice) {
+    public void saveTotalOrderPrice(final TotalOrderPrice totalOrderPrice) {
         this.totalOrderPrice = totalOrderPrice;
     }
 
-    public void saveExpectOrderPrice(ExpectOrderPrice expectOrderPrice) {
+    public void saveExpectOrderPrice(final ExpectOrderPrice expectOrderPrice) {
         this.expectOrderPrice = expectOrderPrice;
     }
 
@@ -41,10 +41,6 @@ public class OrderRepository {
 
     public TotalOrderPrice getTotalOrderPrice() {
         return get(() -> this.totalOrderPrice);
-    }
-
-    public ExpectOrderPrice getExpectOrderPrice() {
-        return get(() -> this.expectOrderPrice);
     }
 
     private <T> T get(final Supplier<T> supplier) {
