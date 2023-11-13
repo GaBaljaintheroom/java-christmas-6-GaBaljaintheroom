@@ -2,8 +2,11 @@ package christmas.io;
 
 import christmas.constants.CategoryMenu;
 import christmas.constants.MenuBoard;
-import christmas.domain.*;
-
+import christmas.domain.Amount;
+import christmas.domain.Menu;
+import christmas.domain.Menus;
+import christmas.domain.Name;
+import christmas.domain.VisitDate;
 import java.util.Arrays;
 import java.util.List;
 

@@ -13,7 +13,8 @@ public final class TotalBenefitPriceFormatter {
     private TotalBenefitPriceFormatter() {
     }
 
-    public static String showExpectedOrderPrice(TotalDiscountPrice totalDiscountPrice, GiveawayMenu giveawayMenu) {
+    public static String showExpectedOrderPrice(TotalDiscountPrice totalDiscountPrice,
+                                                GiveawayMenu giveawayMenu) {
         sb.append(TOTAL_BENEFIT_PRICE);
         int totalBenefitPrice = totalDiscountPrice.getDiscountPrice() + giveawayMenu.getPrice();
         appendTotalBenefitPrice(totalBenefitPrice);

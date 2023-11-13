@@ -4,8 +4,22 @@ import christmas.constants.DaysEventCategory;
 import christmas.constants.EventBadge;
 import christmas.constants.MenuBoard;
 import christmas.constants.SpecialEventDay;
-import christmas.domain.*;
-import christmas.formatter.*;
+import christmas.domain.ChristmasDDayDiscount;
+import christmas.domain.DaysDiscount;
+import christmas.domain.ExpectOrderPrice;
+import christmas.domain.GiveawayMenu;
+import christmas.domain.Menus;
+import christmas.domain.SpecialEventDiscount;
+import christmas.domain.TotalDiscountPrice;
+import christmas.domain.TotalOrderPrice;
+import christmas.domain.VisitDate;
+import christmas.formatter.BenefitDetailsFormatter;
+import christmas.formatter.EventBadgeFormatter;
+import christmas.formatter.ExpectOrderPriceFormatter;
+import christmas.formatter.GiveawayMenuFormatter;
+import christmas.formatter.OrderMenuFormatter;
+import christmas.formatter.TotalBenefitPriceFormatter;
+import christmas.formatter.TotalOrderPriceFormatter;
 import christmas.repository.BenefitDetailsRepository;
 import christmas.repository.OrderRepository;
 
@@ -14,7 +28,8 @@ public class ChristmasService {
     private final OrderRepository orderRepository;
     private final BenefitDetailsRepository benefitDetailsRepository;
 
-    public ChristmasService(final OrderRepository orderRepository, final BenefitDetailsRepository benefitDetailsRepository) {
+    public ChristmasService(final OrderRepository orderRepository,
+                            final BenefitDetailsRepository benefitDetailsRepository) {
         this.orderRepository = orderRepository;
         this.benefitDetailsRepository = benefitDetailsRepository;
     }
@@ -54,7 +69,8 @@ public class ChristmasService {
         VisitDate visitDate = orderRepository.getVisitDate();
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
-        ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice, visitDate);
+        ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice,
+                visitDate);
         benefitDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
     }
 
@@ -74,7 +90,8 @@ public class ChristmasService {
 
         VisitDate visitDate = orderRepository.getVisitDate();
         Integer discountPrice = SpecialEventDay.specialDayEventDiscount(visitDate);
-        SpecialEventDiscount specialEventDiscount = SpecialEventDiscount.from(totalOrderPrice, discountPrice);
+        SpecialEventDiscount specialEventDiscount = SpecialEventDiscount.from(totalOrderPrice,
+                discountPrice);
         benefitDetailsRepository.saveSpecialEventDayDiscount(specialEventDiscount);
     }
 
@@ -84,10 +101,12 @@ public class ChristmasService {
         SpecialEventDiscount specialEventDiscount = benefitDetailsRepository.getSpecialEventDiscount();
         GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
 
-        TotalDiscountPrice totalDiscountPrice = TotalDiscountPrice.from(christMasDDayDiscount, daysDiscount, specialEventDiscount);
+        TotalDiscountPrice totalDiscountPrice = TotalDiscountPrice.from(christMasDDayDiscount,
+                daysDiscount, specialEventDiscount);
         benefitDetailsRepository.saveTotalDiscountPrice(totalDiscountPrice);
 
-        return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
+        return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount,
+                specialEventDiscount, giveawayMenu);
     }
 
     public String showTotalBenefitPrice() {
@@ -99,7 +118,8 @@ public class ChristmasService {
     public void saveExpectOrderPrice() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-        int expectOrderPrice = totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
+        int expectOrderPrice =
+                totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
 
         orderRepository.saveExpectOrderPrice(ExpectOrderPrice.from(expectOrderPrice));
     }

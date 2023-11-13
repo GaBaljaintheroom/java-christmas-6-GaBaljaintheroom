@@ -1,7 +1,6 @@
 package christmas.constants;
 
 import christmas.domain.VisitDate;
-
 import java.util.Arrays;
 
 public enum SpecialEventDay {

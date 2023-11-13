@@ -16,7 +16,8 @@ public enum ChristmasFactory {
     private final ChristmasController christmasController;
 
     ChristmasFactory() {
-        this.christmasController = new ChristmasController(inputManger(), outputView(), christmasService());
+        this.christmasController = new ChristmasController(inputManger(), outputView(),
+                christmasService());
     }
 
     public ChristmasController christmasController() {

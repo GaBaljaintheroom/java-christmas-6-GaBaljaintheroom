@@ -5,7 +5,6 @@ import christmas.domain.VisitDate;
 import christmas.io.InputManager;
 import christmas.io.OutputView;
 import christmas.service.ChristmasService;
-
 import java.util.function.Supplier;
 
 public class ChristmasController {
@@ -15,7 +14,8 @@ public class ChristmasController {
     private final ChristmasService christmasService;
 
 
-    public ChristmasController(final InputManager inputManager, final OutputView outputView, final ChristmasService christmasService) {
+    public ChristmasController(final InputManager inputManager, final OutputView outputView,
+                               final ChristmasService christmasService) {
         this.inputManager = inputManager;
         this.outputView = outputView;
         this.christmasService = christmasService;

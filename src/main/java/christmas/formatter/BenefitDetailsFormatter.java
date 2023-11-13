@@ -20,7 +20,8 @@ public final class BenefitDetailsFormatter {
     private BenefitDetailsFormatter() {
     }
 
-    public static String showBenefitDetails(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount,
+    public static String showBenefitDetails(ChristmasDDayDiscount christMasDDayDiscount,
+                                            DaysDiscount daysDiscount,
                                             SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
         sb.append(BENEFIT_DETAILS);
         noDiscountCase(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
@@ -31,7 +32,8 @@ public final class BenefitDetailsFormatter {
         return sb.toString();
     }
 
-    private static void noDiscountCase(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount,
+    private static void noDiscountCase(ChristmasDDayDiscount christMasDDayDiscount,
+                                       DaysDiscount daysDiscount,
                                        SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
         if (christMasDDayDiscount.getDiscount() + daysDiscount.getDiscount()
                 + specialEventDiscount.getDiscount() + giveawayMenu.getPrice() == 0) {

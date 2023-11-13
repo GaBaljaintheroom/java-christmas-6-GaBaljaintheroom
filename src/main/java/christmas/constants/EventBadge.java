@@ -2,7 +2,6 @@ package christmas.constants;
 
 import christmas.domain.GiveawayMenu;
 import christmas.domain.TotalDiscountPrice;
-
 import java.util.Arrays;
 
 public enum EventBadge {
@@ -14,12 +13,14 @@ public enum EventBadge {
 
     private final String badge;
     private final Integer totalBenefitPrice;
+
     EventBadge(String badge, Integer totalBenefitPrice) {
         this.badge = badge;
         this.totalBenefitPrice = totalBenefitPrice;
     }
 
-    public static String getBadgeByTotalBenefitPrice(TotalDiscountPrice totalDiscountPrice, GiveawayMenu giveawayMenu) {
+    public static String getBadgeByTotalBenefitPrice(TotalDiscountPrice totalDiscountPrice,
+                                                     GiveawayMenu giveawayMenu) {
         int totalBenefitPrice = totalDiscountPrice.getDiscountPrice() + giveawayMenu.getPrice();
         return Arrays.stream(values())
                 .filter(eventBadge -> eventBadge.totalBenefitPrice <= totalBenefitPrice)

@@ -8,7 +8,8 @@ public class TotalDiscountPrice {
         this.discountPrice = price;
     }
 
-    public static TotalDiscountPrice from(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount
+    public static TotalDiscountPrice from(ChristmasDDayDiscount christMasDDayDiscount,
+                                          DaysDiscount daysDiscount
             , SpecialEventDiscount specialEventDiscount) {
         int totalBenefit = christMasDDayDiscount.getDiscount() + daysDiscount.getDiscount()
                 + specialEventDiscount.getDiscount();

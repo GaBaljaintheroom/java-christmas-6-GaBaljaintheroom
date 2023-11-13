@@ -3,7 +3,6 @@ package christmas.constants;
 import christmas.domain.Menu;
 import christmas.domain.Menus;
 import christmas.exception.OnlyBeverageOrderException;
-
 import java.util.List;
 
 public enum CategoryMenu {

@@ -2,7 +2,6 @@ package christmas.domain;
 
 import christmas.exception.InvalidOrderException;
 import christmas.exception.OverOrderCountException;
-
 import java.util.List;
 
 public class Menus {

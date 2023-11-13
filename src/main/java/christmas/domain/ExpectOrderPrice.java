@@ -1,6 +1,7 @@
 package christmas.domain;
 
 public class ExpectOrderPrice {
+
     private final Integer expectPrice;
 
     private ExpectOrderPrice(Integer orderPrice) {

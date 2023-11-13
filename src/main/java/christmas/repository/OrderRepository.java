@@ -5,7 +5,6 @@ import christmas.domain.Menus;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
 import christmas.exception.DomainNullException;
-
 import java.util.Optional;
 import java.util.function.Supplier;
 

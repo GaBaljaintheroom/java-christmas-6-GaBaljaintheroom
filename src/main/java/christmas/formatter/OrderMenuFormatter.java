@@ -20,6 +20,7 @@ public final class OrderMenuFormatter {
     }
 
     private static void getAppend(final Menu menu) {
-        sb.append(String.format(ORDER_MENU_FORM, menu.getMenuNameValue(), menu.getMenuAmountValue()));
+        sb.append(
+                String.format(ORDER_MENU_FORM, menu.getMenuNameValue(), menu.getMenuAmountValue()));
     }
 }

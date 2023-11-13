@@ -14,7 +14,8 @@ public class ChristmasDDayDiscount {
     }
 
     private static Integer applyDiscount(TotalOrderPrice totalOrderPrice, VisitDate visitDate) {
-        if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent()) && canApplyDDayDiscount(visitDate)) {
+        if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent()) && canApplyDDayDiscount(
+                visitDate)) {
             return getDiscount(visitDate);
         }
         return 0;

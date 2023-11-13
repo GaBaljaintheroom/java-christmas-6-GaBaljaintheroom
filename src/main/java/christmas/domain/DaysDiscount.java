@@ -13,7 +13,8 @@ public class DaysDiscount {
         this.dayType = dayType;
     }
 
-    public static DaysDiscount from(TotalOrderPrice totalOrderPrice, VisitDate visitDate, Integer discount) {
+    public static DaysDiscount from(TotalOrderPrice totalOrderPrice, VisitDate visitDate,
+                                    Integer discount) {
         Integer totalDiscount = applyDiscount(totalOrderPrice, discount);
         String dayType = DaysEventCategory.distinctionDayType(visitDate);
         return new DaysDiscount(totalDiscount, dayType);
