@@ -21,13 +21,13 @@ public enum CategoryMenu {
         this.menuBoard = menuBoard;
     }
 
-    public static void validateOnlyBeverageOrder(List<Menu> menus) {
+    public static void validateOnlyBeverageOrder(final List<Menu> menus) {
         if (isOnlyBeverageOrder(menus)) {
             throw new OnlyBeverageOrderException();
         }
     }
 
-    private static boolean isOnlyBeverageOrder(List<Menu> menus) {
+    private static boolean isOnlyBeverageOrder(final List<Menu> menus) {
         Menus beverageMenus = MenuBoard.BEVERAGE_MENU.getMenus();
         return menus.stream()
                 .map(Menu::getMenuName)

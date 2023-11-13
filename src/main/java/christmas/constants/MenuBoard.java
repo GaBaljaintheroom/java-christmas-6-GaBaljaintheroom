@@ -37,14 +37,14 @@ public enum MenuBoard {
         this.menus = menus;
     }
 
-    public static void validateExistMenu(List<Menu> orderMenus) {
+    public static void validateExistMenu(final List<Menu> orderMenus) {
         if (isNotExistOrder(orderMenus)) {
             throw new InvalidOrderException();
         }
     }
 
-    private static boolean isNotExistOrder(List<Menu> orderMenus) {
-        return !orderMenus.stream()
+    private static boolean isNotExistOrder(final List<Menu> orderMenus) {
+        return !orderMenus.parallelStream()
                 .map(Menu::getMenuName)
                 .allMatch(name -> Stream.of(MenuBoard.values())
                         .anyMatch(menuBoard -> menuBoard.menus.isContainMenuName(name)));

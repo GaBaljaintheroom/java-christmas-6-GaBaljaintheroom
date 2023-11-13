@@ -20,30 +20,30 @@ public class Menus {
         return new Menus(values);
     }
 
-    private void validateDuplicateMenu(List<Menu> values) {
+    private void validateDuplicateMenu(final List<Menu> values) {
         if (isDuplicatedMenus(values)) {
             throw new InvalidOrderException();
         }
     }
 
-    private boolean isDuplicatedMenus(List<Menu> values) {
+    private boolean isDuplicatedMenus(final List<Menu> values) {
         return values.size() != getMenuCount(values);
     }
 
-    private long getMenuCount(List<Menu> values) {
+    private long getMenuCount(final List<Menu> values) {
         return values.stream()
                 .map(Menu::getMenuName)
                 .distinct()
                 .count();
     }
 
-    private void validateMenuCount(List<Menu> values) {
+    private void validateMenuCount(final List<Menu> values) {
         if (getOrderTotalCount(values) > MAX_ORDER_COUNT) {
             throw new OverOrderCountException();
         }
     }
 
-    private int getOrderTotalCount(List<Menu> values) {
+    private int getOrderTotalCount(final List<Menu> values) {
         return values.stream()
                 .mapToInt(Menu::getMenuAmountValue)
                 .sum();

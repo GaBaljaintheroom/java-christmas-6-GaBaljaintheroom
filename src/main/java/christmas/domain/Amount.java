@@ -4,11 +4,11 @@ public class Amount {
 
     private final Integer menuAmount;
 
-    private Amount(Integer menuAmount) {
+    private Amount(final Integer menuAmount) {
         this.menuAmount = menuAmount;
     }
 
-    public static Amount from(Integer menuAmount) {
+    public static Amount from(final Integer menuAmount) {
         return new Amount(menuAmount);
     }
 

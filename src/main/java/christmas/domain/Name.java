@@ -6,11 +6,11 @@ public class Name {
 
     private final String menuName;
 
-    private Name(String menuName) {
+    private Name(final String menuName) {
         this.menuName = menuName;
     }
 
-    public static Name from(String menuName) {
+    public static Name from(final String menuName) {
         return new Name(menuName);
     }
 

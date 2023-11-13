@@ -25,7 +25,7 @@ public class InputMapper {
         return Menus.from(menus);
     }
 
-    private List<Menu> getSplitMenus(String orders) {
+    private List<Menu> getSplitMenus(final String orders) {
         return Arrays.stream(orders.split(DIVISION_COMMA))
                 .map(this::toMenu)
                 .toList();
