@@ -28,6 +28,7 @@ public class ChristmasController {
         orderMenus();
         checkTotalOrderPrice();
         checkGiveawayEvent();
+        checkBenefitDetails();
         previewEventBenefit();
     }
 
@@ -56,15 +57,15 @@ public class ChristmasController {
         outputView.printPreviewEventCase(giveawayMenuEvent);
     }
 
-    private void previewEventBenefit() {
-
-        // 혜택 저장
+    private void checkBenefitDetails() {
         christmasService.saveChristmasDDayDiscount();
         christmasService.saveDaysDiscount();
         christmasService.saveSpecialEventDiscount();
 
-        // 혜택 내역 출력
         outputView.printBenefitDetailsMessage(christmasService.showBenefitDetails());
+    }
+
+    private void previewEventBenefit() {
 
         // 총 혜택 금액 출력
         outputView.printTotalBenefitPrice(christmasService.showTotalBenefitPrice());

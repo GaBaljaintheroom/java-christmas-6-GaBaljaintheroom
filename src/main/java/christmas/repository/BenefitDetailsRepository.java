@@ -25,15 +25,15 @@ public class BenefitDetailsRepository {
         this.daysDiscount = daysDiscount;
     }
 
-    public void saveSpecialEventDayDiscount(SpecialEventDiscount specialEventDayDiscount) {
+    public void saveSpecialEventDayDiscount(final SpecialEventDiscount specialEventDayDiscount) {
         this.specialEventDayDiscount = specialEventDayDiscount;
     }
 
-    public void saveGiveawayMenu(GiveawayMenu giveawayMenu) {
+    public void saveGiveawayMenu(final GiveawayMenu giveawayMenu) {
         this.giveawayMenu = giveawayMenu;
     }
 
-    public void saveTotalDiscountPrice(TotalDiscountPrice totalDiscountPrice) {
+    public void saveTotalDiscountPrice(final TotalDiscountPrice totalDiscountPrice) {
         this.totalDiscountPrice = totalDiscountPrice;
     }
 

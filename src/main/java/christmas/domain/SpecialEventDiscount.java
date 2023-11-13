@@ -9,12 +9,12 @@ public class SpecialEventDiscount {
         this.discount = discount;
     }
 
-    public static SpecialEventDiscount from(TotalOrderPrice totalOrderPrice, Integer discount) {
+    public static SpecialEventDiscount from(final TotalOrderPrice totalOrderPrice, final Integer discount) {
         Integer totalDiscount = applyDiscount(totalOrderPrice, discount);
         return new SpecialEventDiscount(totalDiscount);
     }
 
-    private static Integer applyDiscount(TotalOrderPrice totalOrderPrice, Integer discount) {
+    private static Integer applyDiscount(final TotalOrderPrice totalOrderPrice, final Integer discount) {
         if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent())) {
             return discount;
         }

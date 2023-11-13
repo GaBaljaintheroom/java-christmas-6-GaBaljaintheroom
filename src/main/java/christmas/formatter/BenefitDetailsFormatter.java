@@ -14,15 +14,17 @@ public final class BenefitDetailsFormatter {
     private static final String SPECIAL_DISCOUNT = "특별 할인: ";
     private static final String GIVEAWAY_EVENT = "증정 이벤트: ";
     private static final String BENEFIT_DETAILS_FORMAT = "-%,d원\n";
+    private static final Integer NO_DISCOUNT = 0;
 
     private static final StringBuilder sb = new StringBuilder();
 
     private BenefitDetailsFormatter() {
     }
 
-    public static String showBenefitDetails(ChristmasDDayDiscount christMasDDayDiscount,
-                                            DaysDiscount daysDiscount,
-                                            SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
+    public static String showBenefitDetails(final ChristmasDDayDiscount christMasDDayDiscount,
+                                            final DaysDiscount daysDiscount,
+                                            final SpecialEventDiscount specialEventDiscount,
+                                            final GiveawayMenu giveawayMenu) {
         sb.append(BENEFIT_DETAILS);
         noDiscountCase(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu);
         christMasDDayDiscountCase(christMasDDayDiscount);
@@ -32,44 +34,54 @@ public final class BenefitDetailsFormatter {
         return sb.toString();
     }
 
-    private static void noDiscountCase(ChristmasDDayDiscount christMasDDayDiscount,
-                                       DaysDiscount daysDiscount,
-                                       SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
-        if (christMasDDayDiscount.getDiscount() + daysDiscount.getDiscount()
-                + specialEventDiscount.getDiscount() + giveawayMenu.getPrice() == 0) {
+    private static void noDiscountCase(final ChristmasDDayDiscount christMasDDayDiscount,
+                                       final DaysDiscount daysDiscount,
+                                       final SpecialEventDiscount specialEventDiscount,
+                                       final GiveawayMenu giveawayMenu) {
+        if (getTotalDiscount(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu).equals(NO_DISCOUNT)) {
             sb.append(NONE);
         }
     }
 
-    private static void christMasDDayDiscountCase(ChristmasDDayDiscount christMasDDayDiscount) {
+    private static Integer getTotalDiscount(ChristmasDDayDiscount christMasDDayDiscount, DaysDiscount daysDiscount,
+                                            SpecialEventDiscount specialEventDiscount, GiveawayMenu giveawayMenu) {
+        return christMasDDayDiscount.getDiscount() + daysDiscount.getDiscount()
+                + specialEventDiscount.getDiscount() + giveawayMenu.getPrice();
+    }
+
+    private static void christMasDDayDiscountCase(final ChristmasDDayDiscount christMasDDayDiscount) {
         Integer discount = christMasDDayDiscount.getDiscount();
-        if (discount != 0) {
+        if (isDiscountCase(discount)) {
             sb.append(CHRISTMAS_DDAY_DISCOUNT)
                     .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
         }
     }
 
-    private static void daysDiscountCase(DaysDiscount daysDiscount) {
+    private static void daysDiscountCase(final DaysDiscount daysDiscount) {
         Integer discount = daysDiscount.getDiscount();
-        if (discount != 0) {
+        if (isDiscountCase(discount)) {
             sb.append(String.format(DAYS_DISCOUNT, daysDiscount.getDayType()))
                     .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
         }
     }
 
-    private static void specialEventDiscountCase(SpecialEventDiscount specialEventDiscount) {
+    private static void specialEventDiscountCase(final SpecialEventDiscount specialEventDiscount) {
         Integer discount = specialEventDiscount.getDiscount();
-        if (discount != 0) {
+        if (isDiscountCase(discount)) {
             sb.append(SPECIAL_DISCOUNT)
                     .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
         }
     }
 
-    private static void giveawayMenuDiscountCase(GiveawayMenu giveawayMenu) {
+    private static void giveawayMenuDiscountCase(final GiveawayMenu giveawayMenu) {
         Integer price = giveawayMenu.getPrice();
-        if (price != 0) {
+        if (isDiscountCase(price)) {
             sb.append(GIVEAWAY_EVENT)
                     .append(String.format(BENEFIT_DETAILS_FORMAT, price));
         }
+    }
+
+    private static boolean isDiscountCase(Integer price) {
+        return !price.equals(NO_DISCOUNT);
     }
 }

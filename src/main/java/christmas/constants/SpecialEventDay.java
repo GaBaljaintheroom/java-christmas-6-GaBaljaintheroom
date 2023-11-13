@@ -11,17 +11,19 @@ public enum SpecialEventDay {
     TWENTY_FIVE(25),
     THIRTY_ONE(31);
 
+    private static final Integer SPECIAL_DISCOUNT = 1_000;
+    private static final Integer NO_DISCOUNT = 0;
     private final Integer day;
 
     SpecialEventDay(Integer day) {
         this.day = day;
     }
 
-    public static Integer specialDayEventDiscount(VisitDate visitDate) {
+    public static Integer specialDayEventDiscount(final VisitDate visitDate) {
         return Arrays.stream(values())
                 .filter(specialEventDay -> specialEventDay.day.equals(visitDate.getDayOfMonth()))
                 .findFirst()
-                .map(specialEventDay -> 1_000)
-                .orElse(0);
+                .map(specialEventDay -> SPECIAL_DISCOUNT)
+                .orElse(NO_DISCOUNT);
     }
 }
