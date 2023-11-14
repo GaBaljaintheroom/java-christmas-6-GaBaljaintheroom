@@ -1,12 +1,12 @@
 package christmas.formatter;
 
 import christmas.constants.PreviewElement;
+import christmas.constants.PreviewElementForm;
 import christmas.domain.GiveawayMenu;
 import christmas.domain.TotalDiscountPrice;
 
 public final class TotalBenefitPriceFormatter {
 
-    private static final String TOTAL_BENEFIT_PRICE_FORM = "-%,d원\n";
     private static final String NONE = "0원\n";
     private static final StringBuilder sb = new StringBuilder();
     private static final Integer NO_DISCOUNT = 0;
@@ -26,7 +26,7 @@ public final class TotalBenefitPriceFormatter {
 
     private static void appendTotalBenefitPrice(final Integer totalBenefitPrice) {
         if (isDiscountCase(totalBenefitPrice)) {
-            sb.append(String.format(TOTAL_BENEFIT_PRICE_FORM, totalBenefitPrice));
+            sb.append(String.format(PreviewElementForm.BENEFIT_PRICE_FORM.getForm(), totalBenefitPrice));
         }
     }
 

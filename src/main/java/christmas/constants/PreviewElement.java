@@ -10,9 +10,9 @@ public enum PreviewElement {
     TOTAL_ORDER_PRICE("<할인 전 총주문 금액>"),
     NONE("없음");
 
-    private static final String NEXT_LINE = "\n";
+
     PreviewElement(String element) {
-        this.element = element + NEXT_LINE;
+        this.element = element + PreviewElementForm.NEXT_LINE;
     }
 
     private final String element;

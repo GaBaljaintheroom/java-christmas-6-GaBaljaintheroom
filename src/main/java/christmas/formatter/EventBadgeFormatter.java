@@ -1,6 +1,7 @@
 package christmas.formatter;
 
 import christmas.constants.PreviewElement;
+import christmas.constants.PreviewElementForm;
 
 public final class EventBadgeFormatter {
 
@@ -12,7 +13,7 @@ public final class EventBadgeFormatter {
     public static String showEventBadge(final String badge) {
         sb.append(PreviewElement.EVENT_BADGE.getElement())
                 .append(badge)
-                .append("\n");
+                .append(PreviewElementForm.NEXT_LINE);
         return sb.toString();
     }
 }

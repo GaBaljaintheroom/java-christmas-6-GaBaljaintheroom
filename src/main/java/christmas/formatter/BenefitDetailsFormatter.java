@@ -1,6 +1,7 @@
 package christmas.formatter;
 
 import christmas.constants.PreviewElement;
+import christmas.constants.PreviewElementForm;
 import christmas.domain.ChristmasDDayDiscount;
 import christmas.domain.DaysDiscount;
 import christmas.domain.GiveawayMenu;
@@ -12,7 +13,6 @@ public final class BenefitDetailsFormatter {
     private static final String DAYS_DISCOUNT = "%s 할인: ";
     private static final String SPECIAL_DISCOUNT = "특별 할인: ";
     private static final String GIVEAWAY_EVENT = "증정 이벤트: ";
-    private static final String BENEFIT_DETAILS_FORMAT = "-%,d원\n";
     private static final Integer NO_DISCOUNT = 0;
 
     private static final StringBuilder sb = new StringBuilder();
@@ -55,7 +55,7 @@ public final class BenefitDetailsFormatter {
         Integer discount = christMasDDayDiscount.getDiscount();
         if (isDiscountCase(discount)) {
             sb.append(CHRISTMAS_DDAY_DISCOUNT)
-                    .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
+                    .append(String.format(PreviewElementForm.BENEFIT_PRICE_FORM.getForm(), discount));
         }
     }
 
@@ -63,7 +63,7 @@ public final class BenefitDetailsFormatter {
         Integer discount = daysDiscount.getDiscount();
         if (isDiscountCase(discount)) {
             sb.append(String.format(DAYS_DISCOUNT, daysDiscount.getDayType()))
-                    .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
+                    .append(String.format(PreviewElementForm.BENEFIT_PRICE_FORM.getForm(), discount));
         }
     }
 
@@ -71,7 +71,7 @@ public final class BenefitDetailsFormatter {
         Integer discount = specialEventDiscount.getDiscount();
         if (isDiscountCase(discount)) {
             sb.append(SPECIAL_DISCOUNT)
-                    .append(String.format(BENEFIT_DETAILS_FORMAT, discount));
+                    .append(String.format(PreviewElementForm.BENEFIT_PRICE_FORM.getForm(), discount));
         }
     }
 
@@ -79,7 +79,7 @@ public final class BenefitDetailsFormatter {
         Integer price = giveawayMenu.getPrice();
         if (isDiscountCase(price)) {
             sb.append(GIVEAWAY_EVENT)
-                    .append(String.format(BENEFIT_DETAILS_FORMAT, price));
+                    .append(String.format(PreviewElementForm.BENEFIT_PRICE_FORM.getForm(), price));
         }
     }
 
