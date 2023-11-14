@@ -1,12 +1,15 @@
-package christmas.domain;
+package christmas.domain.menu;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import christmas.constants.message.ErrorMessage;
+import christmas.domain.VisitDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 @DisplayName("방문 날짜 객체에 대해")
 class VisitDateTest {

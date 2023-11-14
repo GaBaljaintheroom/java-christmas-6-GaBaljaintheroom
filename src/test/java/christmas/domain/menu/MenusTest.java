@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.menu;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
@@ -7,11 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import christmas.constants.message.ErrorMessage;
-import christmas.domain.menu.Amount;
-import christmas.domain.menu.Menu;
-import christmas.domain.menu.Menus;
-import christmas.domain.menu.Name;
-import christmas.domain.menu.Price;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
