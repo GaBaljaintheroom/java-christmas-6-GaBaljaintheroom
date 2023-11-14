@@ -1,19 +1,20 @@
 package christmas.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import christmas.constants.message.ErrorMessage;
 import christmas.domain.menu.Amount;
 import christmas.domain.menu.Menu;
 import christmas.domain.menu.Menus;
 import christmas.domain.menu.Name;
 import christmas.domain.menu.Price;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.AssertionsForClassTypes.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("메뉴들 객체에 대해")
 class MenusTest {
@@ -110,6 +111,20 @@ class MenusTest {
 
         //then
         assertThat(actual).isEqualTo(55000);
+    }
+
+    @Test
+    @DisplayName("이름과 일치하는 메뉴의 개수를 반환한다.")
+    void Given_CreateMenus_When_OrderMenus_Then_ReturnMatchCount() {
+        //given
+        Menus menus = Menus.from(normalMenuSources());
+        List<Menu> orderMenus = List.of(Menu.of(Name.from("티본스테이크"), Amount.from(1)));
+
+        //when
+        Long matchCount = menus.matchingOrderMenuCount(Menus.from(orderMenus));
+
+        //then
+        assertThat(matchCount).isEqualTo(1);
     }
 
 }
