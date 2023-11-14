@@ -1,5 +1,6 @@
 package christmas.formatter;
 
+import christmas.constants.ChristmasRule;
 import christmas.constants.PreviewElement;
 import christmas.constants.PreviewElementForm;
 import christmas.domain.ChristmasDDayDiscount;
@@ -13,7 +14,6 @@ public final class BenefitDetailsFormatter {
     private static final String DAYS_DISCOUNT = "%s 할인: ";
     private static final String SPECIAL_DISCOUNT = "특별 할인: ";
     private static final String GIVEAWAY_EVENT = "증정 이벤트: ";
-    private static final Integer NO_DISCOUNT = 0;
 
     private static final StringBuilder sb = new StringBuilder();
 
@@ -38,7 +38,7 @@ public final class BenefitDetailsFormatter {
                                        final SpecialEventDiscount specialEventDiscount,
                                        final GiveawayMenu giveawayMenu) {
         if (getTotalDiscount(christMasDDayDiscount, daysDiscount, specialEventDiscount, giveawayMenu).equals(
-                NO_DISCOUNT)) {
+                ChristmasRule.NO_DISCOUNT.getValue())) {
             sb.append(PreviewElement.NONE.getElement());
         }
     }
@@ -84,6 +84,6 @@ public final class BenefitDetailsFormatter {
     }
 
     private static boolean isDiscountCase(Integer price) {
-        return !price.equals(NO_DISCOUNT);
+        return !price.equals(ChristmasRule.NO_DISCOUNT.getValue());
     }
 }

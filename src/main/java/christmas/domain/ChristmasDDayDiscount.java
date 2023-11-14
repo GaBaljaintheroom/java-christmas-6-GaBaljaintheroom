@@ -1,12 +1,13 @@
 package christmas.domain;
 
+import christmas.constants.ChristmasRule;
+
 public class ChristmasDDayDiscount {
 
+    private static final Integer FIRST_EVENT_DAY = 1;
     private static final Integer LAST_EVENT_DAY = 25;
     private static final Integer DEFAULT_DISCOUNT = 1000;
-    private static final Integer INIT_DAY = 1;
     private static final Integer BONUS = 100;
-    private static final Integer NO_DISCOUNT = 0;
     private final Integer discount;
 
     private ChristmasDDayDiscount(final Integer discount) {
@@ -22,7 +23,7 @@ public class ChristmasDDayDiscount {
         if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent()) && canApplyDDayDiscount(visitDate)) {
             return getDiscount(visitDate);
         }
-        return NO_DISCOUNT;
+        return ChristmasRule.NO_DISCOUNT.getValue();
     }
 
     private static boolean canApplyDDayDiscount(final VisitDate visitDate) {
@@ -30,7 +31,7 @@ public class ChristmasDDayDiscount {
     }
 
     private static Integer getDiscount(final VisitDate visitDate) {
-        Integer additionalDiscount = (visitDate.getDayOfMonth() - INIT_DAY) * BONUS;
+        Integer additionalDiscount = (visitDate.getDayOfMonth() - FIRST_EVENT_DAY) * BONUS;
         return DEFAULT_DISCOUNT + additionalDiscount;
     }
 

@@ -1,5 +1,6 @@
 package christmas.io;
 
+import christmas.constants.PreviewElementForm;
 import christmas.constants.ProgressMessage;
 
 public class OutputView {
@@ -21,7 +22,7 @@ public class OutputView {
     }
 
     public void printPreviewEventMessage(final Integer visitDate) {
-        System.out.printf((ProgressMessage.PREVIEW_EVENT_MESSAGE) + "%n", visitDate);
+        System.out.printf((ProgressMessage.PREVIEW_EVENT_MESSAGE + PreviewElementForm.NEXT_LINE) + "%n", visitDate);
     }
 
     public void printPreviewEventCase(final String eventCase) {

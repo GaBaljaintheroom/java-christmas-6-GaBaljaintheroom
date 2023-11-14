@@ -1,8 +1,9 @@
 package christmas.domain;
 
+import christmas.constants.ChristmasRule;
+
 public class SpecialEventDiscount {
 
-    private static final Integer NO_DISCOUNT = 0;
     private final Integer discount;
 
     private SpecialEventDiscount(final Integer discount) {
@@ -18,7 +19,7 @@ public class SpecialEventDiscount {
         if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent())) {
             return discount;
         }
-        return NO_DISCOUNT;
+        return ChristmasRule.NO_DISCOUNT.getValue();
     }
 
     public Integer getDiscount() {

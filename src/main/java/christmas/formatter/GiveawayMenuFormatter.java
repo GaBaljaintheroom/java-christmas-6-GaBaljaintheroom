@@ -1,11 +1,12 @@
 package christmas.formatter;
 
 import christmas.constants.PreviewElement;
+import christmas.constants.PreviewElementForm;
 import christmas.domain.GiveawayMenu;
 
 public final class GiveawayMenuFormatter {
 
-    private static final String ONE_CHAMPAGNE = "샴페인 1개\n";
+    private static final String ONE_CHAMPAGNE = "샴페인 1개";
     private static final Integer CHAMPAGNE_PRICE = 25_000;
     private static final StringBuilder sb = new StringBuilder();
 
@@ -24,7 +25,7 @@ public final class GiveawayMenuFormatter {
 
     private static void appendChampagne(final Integer orderPrice) {
         if (orderPrice.equals(CHAMPAGNE_PRICE)) {
-            sb.append(ONE_CHAMPAGNE);
+            sb.append(ONE_CHAMPAGNE).append(PreviewElementForm.NEXT_LINE);
         }
     }
 

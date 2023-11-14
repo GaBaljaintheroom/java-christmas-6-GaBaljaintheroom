@@ -12,7 +12,6 @@ public enum SpecialEventDay {
     THIRTY_ONE(31);
 
     private static final Integer SPECIAL_DISCOUNT = 1_000;
-    private static final Integer NO_DISCOUNT = 0;
     private final Integer day;
 
     SpecialEventDay(final Integer day) {
@@ -24,6 +23,6 @@ public enum SpecialEventDay {
                 .filter(specialEventDay -> specialEventDay.day.equals(visitDate.getDayOfMonth()))
                 .findFirst()
                 .map(specialEventDay -> SPECIAL_DISCOUNT)
-                .orElse(NO_DISCOUNT);
+                .orElse(ChristmasRule.NO_DISCOUNT.getValue());
     }
 }

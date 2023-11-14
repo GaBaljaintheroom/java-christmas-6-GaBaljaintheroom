@@ -1,12 +1,12 @@
 package christmas.domain;
 
+import christmas.constants.ChristmasRule;
 import christmas.exception.InvalidOrderException;
 import christmas.exception.OverOrderCountException;
 import java.util.List;
 
 public class Menus {
 
-    private static final int MAX_ORDER_COUNT = 20;
     private final List<Menu> values;
 
     private Menus(final List<Menu> values) {
@@ -37,7 +37,7 @@ public class Menus {
     }
 
     private void validateMenuCount(final List<Menu> values) {
-        if (getOrderTotalCount(values) > MAX_ORDER_COUNT) {
+        if (getOrderTotalCount(values) > ChristmasRule.MAX_ORDER_COUNT.getValue()) {
             throw new OverOrderCountException();
         }
     }

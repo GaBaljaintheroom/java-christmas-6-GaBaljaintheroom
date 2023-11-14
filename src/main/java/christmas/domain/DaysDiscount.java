@@ -1,10 +1,10 @@
 package christmas.domain;
 
+import christmas.constants.ChristmasRule;
 import christmas.constants.DaysEventCategory;
 
 public class DaysDiscount {
 
-    private static final Integer NO_DISCOUNT = 0;
     private final Integer discount;
     private final String dayType;
 
@@ -24,7 +24,7 @@ public class DaysDiscount {
         if (Boolean.TRUE.equals(totalOrderPrice.canApplyEvent())) {
             return discount;
         }
-        return NO_DISCOUNT;
+        return ChristmasRule.NO_DISCOUNT.getValue();
     }
 
     public Integer getDiscount() {
