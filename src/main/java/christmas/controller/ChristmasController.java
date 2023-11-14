@@ -1,6 +1,6 @@
 package christmas.controller;
 
-import christmas.domain.Menus;
+import christmas.domain.menu.Menus;
 import christmas.domain.VisitDate;
 import christmas.io.InputManager;
 import christmas.io.OutputView;

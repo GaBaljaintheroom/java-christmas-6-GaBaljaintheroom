@@ -1,9 +1,9 @@
 package christmas.constants;
 
-import christmas.domain.Menu;
-import christmas.domain.Menus;
-import christmas.domain.Name;
-import christmas.domain.Price;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
+import christmas.domain.menu.Name;
+import christmas.domain.menu.Price;
 import christmas.exception.InvalidOrderException;
 import java.util.List;
 import java.util.stream.Stream;

@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.constants.pattern;
 
 import java.util.regex.Pattern;
 

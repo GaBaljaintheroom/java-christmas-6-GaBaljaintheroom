@@ -1,9 +1,9 @@
 package christmas.formatter;
 
-import christmas.constants.PreviewElement;
-import christmas.constants.PreviewElementForm;
-import christmas.domain.Menu;
-import christmas.domain.Menus;
+import christmas.constants.element.PreviewElement;
+import christmas.constants.element.PreviewElementForm;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
 
 public final class OrderMenuFormatter {
 

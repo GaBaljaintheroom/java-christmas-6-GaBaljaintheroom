@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.constants.ErrorMessage;
+import christmas.constants.message.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.constants.message;
 
 public enum ErrorMessage {
 

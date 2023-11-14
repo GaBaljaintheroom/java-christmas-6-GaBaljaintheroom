@@ -1,8 +1,8 @@
 package christmas.formatter;
 
-import christmas.constants.PreviewElement;
-import christmas.constants.PreviewElementForm;
-import christmas.domain.ExpectOrderPrice;
+import christmas.constants.element.PreviewElement;
+import christmas.constants.element.PreviewElementForm;
+import christmas.domain.preview.ExpectOrderPrice;
 
 public final class ExpectOrderPriceFormatter {
 

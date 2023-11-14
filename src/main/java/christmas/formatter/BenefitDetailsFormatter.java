@@ -1,12 +1,12 @@
 package christmas.formatter;
 
 import christmas.constants.ChristmasRule;
-import christmas.constants.PreviewElement;
-import christmas.constants.PreviewElementForm;
-import christmas.domain.ChristmasDDayDiscount;
-import christmas.domain.DaysDiscount;
-import christmas.domain.GiveawayMenu;
-import christmas.domain.SpecialEventDiscount;
+import christmas.constants.element.PreviewElement;
+import christmas.constants.element.PreviewElementForm;
+import christmas.domain.preview.ChristmasDDayDiscount;
+import christmas.domain.preview.DaysDiscount;
+import christmas.domain.preview.GiveawayMenu;
+import christmas.domain.preview.SpecialEventDiscount;
 
 public final class BenefitDetailsFormatter {
 

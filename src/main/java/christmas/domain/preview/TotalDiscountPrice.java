@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.preview;
 
 public class TotalDiscountPrice {
 

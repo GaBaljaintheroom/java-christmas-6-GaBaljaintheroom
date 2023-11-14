@@ -1,10 +1,10 @@
 package christmas.repository;
 
-import christmas.domain.ChristmasDDayDiscount;
-import christmas.domain.DaysDiscount;
-import christmas.domain.GiveawayMenu;
-import christmas.domain.SpecialEventDiscount;
-import christmas.domain.TotalDiscountPrice;
+import christmas.domain.preview.ChristmasDDayDiscount;
+import christmas.domain.preview.DaysDiscount;
+import christmas.domain.preview.GiveawayMenu;
+import christmas.domain.preview.SpecialEventDiscount;
+import christmas.domain.preview.TotalDiscountPrice;
 import christmas.exception.DomainNullException;
 import java.util.Optional;
 import java.util.function.Supplier;

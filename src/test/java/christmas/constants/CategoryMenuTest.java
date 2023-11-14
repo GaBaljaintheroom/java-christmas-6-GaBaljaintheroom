@@ -1,8 +1,9 @@
 package christmas.constants;
 
-import christmas.domain.Menu;
-import christmas.domain.Name;
-import christmas.domain.Price;
+import christmas.constants.message.ErrorMessage;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.Name;
+import christmas.domain.menu.Price;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

@@ -1,10 +1,10 @@
 package christmas.service;
 
 import christmas.constants.MenuBoard;
-import christmas.domain.ExpectOrderPrice;
-import christmas.domain.Menus;
-import christmas.domain.TotalDiscountPrice;
-import christmas.domain.TotalOrderPrice;
+import christmas.domain.preview.ExpectOrderPrice;
+import christmas.domain.menu.Menus;
+import christmas.domain.preview.TotalDiscountPrice;
+import christmas.domain.preview.TotalOrderPrice;
 import christmas.domain.VisitDate;
 import christmas.formatter.ExpectOrderPriceFormatter;
 import christmas.formatter.OrderMenuFormatter;

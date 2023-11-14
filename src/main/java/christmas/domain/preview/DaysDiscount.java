@@ -1,7 +1,8 @@
-package christmas.domain;
+package christmas.domain.preview;
 
 import christmas.constants.ChristmasRule;
 import christmas.constants.DaysEventCategory;
+import christmas.domain.VisitDate;
 
 public class DaysDiscount {
 

@@ -1,6 +1,6 @@
 package christmas.constants;
 
-import christmas.domain.Menus;
+import christmas.domain.menu.Menus;
 import christmas.domain.VisitDate;
 import christmas.exception.NotFoundCategoryMenuByDay;
 import java.util.Arrays;

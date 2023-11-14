@@ -1,8 +1,8 @@
 package christmas.formatter;
 
-import christmas.constants.PreviewElement;
-import christmas.constants.PreviewElementForm;
-import christmas.domain.GiveawayMenu;
+import christmas.constants.element.PreviewElement;
+import christmas.constants.element.PreviewElementForm;
+import christmas.domain.preview.GiveawayMenu;
 
 public final class GiveawayMenuFormatter {
 

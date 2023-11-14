@@ -1,7 +1,7 @@
 package christmas.constants;
 
-import christmas.domain.GiveawayMenu;
-import christmas.domain.TotalDiscountPrice;
+import christmas.domain.preview.GiveawayMenu;
+import christmas.domain.preview.TotalDiscountPrice;
 import java.util.Arrays;
 
 public enum EventBadge {

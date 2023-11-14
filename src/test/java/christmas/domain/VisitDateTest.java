@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constants.ErrorMessage;
+import christmas.constants.message.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

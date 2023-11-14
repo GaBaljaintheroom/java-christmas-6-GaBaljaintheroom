@@ -1,7 +1,7 @@
 package christmas.formatter;
 
-import christmas.constants.PreviewElement;
-import christmas.constants.PreviewElementForm;
+import christmas.constants.element.PreviewElement;
+import christmas.constants.element.PreviewElementForm;
 
 public final class EventBadgeFormatter {
 

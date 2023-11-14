@@ -1,6 +1,11 @@
 package christmas.domain;
 
-import christmas.constants.ErrorMessage;
+import christmas.constants.message.ErrorMessage;
+import christmas.domain.menu.Amount;
+import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
+import christmas.domain.menu.Name;
+import christmas.domain.menu.Price;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

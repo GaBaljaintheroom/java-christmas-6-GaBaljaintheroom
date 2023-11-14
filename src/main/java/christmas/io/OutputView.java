@@ -1,7 +1,7 @@
 package christmas.io;
 
-import christmas.constants.PreviewElementForm;
-import christmas.constants.ProgressMessage;
+import christmas.constants.element.PreviewElementForm;
+import christmas.constants.message.ProgressMessage;
 
 public class OutputView {
 

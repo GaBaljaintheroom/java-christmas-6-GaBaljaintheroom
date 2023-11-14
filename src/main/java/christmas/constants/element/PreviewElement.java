@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.constants.element;
 
 public enum PreviewElement {
     BENEFIT_DETAILS("<혜택 내역>"),

@@ -1,4 +1,4 @@
-package christmas.constants;
+package christmas.constants.element;
 
 public enum PreviewElementForm {
     BENEFIT_PRICE_FORM("-%,d원"),

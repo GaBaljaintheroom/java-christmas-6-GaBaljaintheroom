@@ -1,6 +1,6 @@
 package christmas.exception;
 
-import christmas.constants.ErrorMessage;
+import christmas.constants.message.ErrorMessage;
 
 public class InvalidDateException extends IllegalArgumentException {
 

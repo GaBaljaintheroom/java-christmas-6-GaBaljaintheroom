@@ -1,6 +1,6 @@
 package christmas.io;
 
-import christmas.domain.Menus;
+import christmas.domain.menu.Menus;
 import christmas.domain.VisitDate;
 
 public class InputManager {

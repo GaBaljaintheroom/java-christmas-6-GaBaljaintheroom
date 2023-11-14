@@ -1,6 +1,6 @@
 package christmas.validator;
 
-import christmas.constants.InputPattern;
+import christmas.constants.pattern.InputPattern;
 import christmas.exception.InvalidDateException;
 import christmas.exception.InvalidOrderException;
 import java.util.Arrays;
