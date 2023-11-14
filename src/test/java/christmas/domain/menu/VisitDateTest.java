@@ -43,4 +43,18 @@ class VisitDateTest {
 
         assertThat(actual).isEqualTo("일요일");
     }
+
+    @Test
+    @DisplayName("방문 날짜의 일을 구한다.")
+    void Given_When_Then_() {
+        //given
+        VisitDate visitDate = VisitDate.from(3);
+
+        //when
+        Integer actual = visitDate.getDayOfMonth();
+
+        //then
+        assertThat(actual).isEqualTo(3);
+
+    }
 }
