@@ -1,11 +1,13 @@
 package christmas.constants;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import christmas.constants.message.ErrorMessage;
 import christmas.domain.menu.Amount;
 import christmas.domain.menu.Menu;
+import christmas.domain.menu.Menus;
 import christmas.domain.menu.Name;
 import java.util.List;
 import java.util.stream.Stream;
@@ -37,8 +39,8 @@ class CategoryMenuTest {
     @ParameterizedTest
     @MethodSource("onlyBeverageOrders")
     @DisplayName("음료만 주문시 예외가 발생한다.")
-    void When_OnlyBeverageOrder_Then_ThrowException(List<Menu> menus) {
-        assertThatThrownBy(() -> CategoryMenu.validateOnlyBeverageOrder(menus))
+    void When_OnlyBeverageOrder_Then_ThrowException(List<Menu> orderMenus) {
+        assertThatThrownBy(() -> CategoryMenu.validateOnlyBeverageOrder(orderMenus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(errorTage);
     }
@@ -46,8 +48,22 @@ class CategoryMenuTest {
     @ParameterizedTest
     @MethodSource("normalMenuOrders")
     @DisplayName("정상적으로 주문을 한다.")
-    void When_InputCorrectOrder_Then_NotThrowException(List<Menu> menus) {
-        assertThatCode(() -> CategoryMenu.validateOnlyBeverageOrder(menus))
+    void When_InputCorrectOrder_Then_NotThrowException(List<Menu> orderMenus) {
+        assertThatCode(() -> CategoryMenu.validateOnlyBeverageOrder(orderMenus))
                 .doesNotThrowAnyException();
+    }
+
+    @ParameterizedTest
+    @MethodSource("normalMenuOrders")
+    @DisplayName("메뉴를 주문 했을 때 음료가 몇 개인지 반환한다.")
+    void Given_When_Then_(List<Menu> orderMenus) {
+        //given
+        Menus menus = Menus.from(orderMenus);
+
+        //when
+        Long actual = CategoryMenu.BEVERAGE.getDiscountMenuCount(menus);
+
+        //then
+        assertThat(actual).isEqualTo(2);
     }
 }
