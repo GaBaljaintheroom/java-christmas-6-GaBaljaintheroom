@@ -60,7 +60,7 @@ public class Menus {
         return values.stream()
                 .filter(m -> m.isEqualName(menuName))
                 .findFirst().stream()
-                .mapToInt(m -> m.getPriceValue() * orderMenu.getMenuAmountValue())
+                .mapToInt(m -> m.getMenuPriceValue() * orderMenu.getMenuAmountValue())
                 .sum();
     }
 

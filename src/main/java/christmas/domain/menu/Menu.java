@@ -39,7 +39,7 @@ public class Menu {
         return menuName.getMenuName();
     }
 
-    public Integer getPriceValue() {
+    public Integer getMenuPriceValue() {
         return menuPrice.getMenuPrice();
     }
 
