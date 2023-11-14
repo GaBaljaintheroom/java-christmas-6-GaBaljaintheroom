@@ -4,8 +4,8 @@ public class ExpectOrderPrice {
 
     private final Integer expectPrice;
 
-    private ExpectOrderPrice(final Integer orderPrice) {
-        this.expectPrice = orderPrice;
+    private ExpectOrderPrice(final Integer expectOrderPrice) {
+        this.expectPrice = expectOrderPrice;
     }
 
     public static ExpectOrderPrice from(final Integer expectOrderPrice) {
