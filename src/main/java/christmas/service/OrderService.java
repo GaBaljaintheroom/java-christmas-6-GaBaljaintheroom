@@ -1,12 +1,12 @@
 package christmas.service;
 
 import christmas.constants.MenuBoard;
-import christmas.domain.preview.ExpectOrderPrice;
+import christmas.domain.preview.ExpectPaymentPrice;
 import christmas.domain.menu.Menus;
 import christmas.domain.preview.TotalDiscountPrice;
 import christmas.domain.preview.TotalOrderPrice;
 import christmas.domain.VisitDate;
-import christmas.formatter.ExpectOrderPriceFormatter;
+import christmas.formatter.ExpectPaymentPriceFormatter;
 import christmas.formatter.OrderMenuFormatter;
 import christmas.formatter.TotalOrderPriceFormatter;
 import christmas.repository.EventDetailsRepository;
@@ -51,10 +51,10 @@ public class OrderService {
         TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
 
         Integer price = totalOrderPrice.getOrderPrice() - totalDiscountPrice.getDiscountPrice();
-        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(price);
+        ExpectPaymentPrice expectPaymentPrice = ExpectPaymentPrice.from(price);
 
-        orderRepository.saveExpectOrderPrice(expectOrderPrice);
-        return ExpectOrderPriceFormatter.showExpectOrderPrice(expectOrderPrice);
+        orderRepository.saveExpectPaymentPrice(expectPaymentPrice);
+        return ExpectPaymentPriceFormatter.showExpectPaymentPrice(expectPaymentPrice);
     }
 
 }

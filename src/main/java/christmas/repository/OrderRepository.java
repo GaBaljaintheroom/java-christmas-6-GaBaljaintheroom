@@ -1,6 +1,6 @@
 package christmas.repository;
 
-import christmas.domain.preview.ExpectOrderPrice;
+import christmas.domain.preview.ExpectPaymentPrice;
 import christmas.domain.menu.Menus;
 import christmas.domain.preview.TotalOrderPrice;
 import christmas.domain.VisitDate;
@@ -16,7 +16,7 @@ public enum OrderRepository {
     private VisitDate visitDate;
     private Menus orderMenus;
     private TotalOrderPrice totalOrderPrice;
-    private ExpectOrderPrice expectOrderPrice;
+    private ExpectPaymentPrice expectPaymentPrice;
 
     public void saveVisitDate(final VisitDate visitDate) {
         this.visitDate = visitDate;
@@ -30,8 +30,8 @@ public enum OrderRepository {
         this.totalOrderPrice = totalOrderPrice;
     }
 
-    public void saveExpectOrderPrice(final ExpectOrderPrice expectOrderPrice) {
-        this.expectOrderPrice = expectOrderPrice;
+    public void saveExpectPaymentPrice(final ExpectPaymentPrice expectPaymentPrice) {
+        this.expectPaymentPrice = expectPaymentPrice;
     }
 
     public VisitDate getVisitDate() {

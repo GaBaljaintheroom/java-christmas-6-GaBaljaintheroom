@@ -12,12 +12,12 @@ class ExpectOrderPriceTest {
     @DisplayName("예상 주문 금액을 저장할 수 있다.")
     void Given_When_Then_() {
         //given
-        ExpectOrderPrice expectOrderPrice = ExpectOrderPrice.from(1000);
+        ExpectPaymentPrice expectPaymentPrice = ExpectPaymentPrice.from(1000);
 
         //when
-        Integer expectPrice = expectOrderPrice.getExpectPrice();
+        Integer actual = expectPaymentPrice.getExpectPrice();
 
         //then
-        assertThat(expectPrice).isEqualTo(1000);
+        assertThat(actual).isEqualTo(1000);
     }
 }
