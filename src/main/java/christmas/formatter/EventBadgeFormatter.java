@@ -1,15 +1,16 @@
 package christmas.formatter;
 
+import christmas.constants.PreviewElement;
+
 public final class EventBadgeFormatter {
 
-    public static final String EVENT_BADGE = "<12월 이벤트 배지>\n";
     private static final StringBuilder sb = new StringBuilder();
 
     private EventBadgeFormatter() {
     }
 
     public static String showEventBadge(final String badge) {
-        sb.append(EVENT_BADGE)
+        sb.append(PreviewElement.EVENT_BADGE.getElement())
                 .append(badge)
                 .append("\n");
         return sb.toString();

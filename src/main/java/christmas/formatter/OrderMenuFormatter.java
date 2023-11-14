@@ -1,11 +1,11 @@
 package christmas.formatter;
 
+import christmas.constants.PreviewElement;
 import christmas.domain.Menu;
 import christmas.domain.Menus;
 
 public final class OrderMenuFormatter {
 
-    private static final String ORDER_MENU = "<주문 메뉴>\n";
     private static final String ORDER_MENU_FORM = "%s %s개\n";
     private static final StringBuilder sb = new StringBuilder();
 
@@ -13,7 +13,7 @@ public final class OrderMenuFormatter {
     }
 
     public static String showOrderMenus(final Menus orderMenus) {
-        sb.append(ORDER_MENU);
+        sb.append(PreviewElement.ORDER_MENU.getElement());
         orderMenus.getValues()
                 .forEach(OrderMenuFormatter::getAppend);
         return sb.toString();
