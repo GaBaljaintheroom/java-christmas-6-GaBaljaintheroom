@@ -2,6 +2,7 @@ package christmas.domain.menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.DisplayName;
@@ -19,15 +20,15 @@ class MenuTest {
 
         //when
         Menu menu = Menu.of(name, price);
-        String menuName = menu.getMenuNameValue();
-        Integer priceValue = menu.getMenuPriceValue();
-        Integer menuAmountValue = menu.getMenuAmountValue();
+        String actualMenuName = menu.getMenuNameValue();
+        Integer actualPriceValue = menu.getMenuPriceValue();
+        Integer actualMenuAmountValue = menu.getMenuAmountValue();
 
         //then
         assertAll(
-                () -> assertThat(menuName).isEqualTo("제로콜라"),
-                () -> assertThat(priceValue).isEqualTo(3000),
-                () -> assertThat(menuAmountValue).isZero()
+                () -> assertThat(actualMenuName).isEqualTo("제로콜라"),
+                () -> assertThat(actualPriceValue).isEqualTo(3000),
+                () -> assertThat(actualMenuAmountValue).isZero()
         );
     }
 
@@ -40,32 +41,47 @@ class MenuTest {
 
         //when
         Menu menu = Menu.of(name, amount);
-        String menuName = menu.getMenuNameValue();
-        Integer menuAmountValue = menu.getMenuAmountValue();
-        Integer priceValue = menu.getMenuPriceValue();
+        String actualMenuName = menu.getMenuNameValue();
+        Integer actualMenuAmountValue = menu.getMenuAmountValue();
+        Integer actualPriceValue = menu.getMenuPriceValue();
 
         //then
         assertAll(
-                () -> assertThat(menuName).isEqualTo("제로콜라"),
-                () -> assertThat(priceValue).isZero(),
-                () -> assertThat(menuAmountValue).isEqualTo(1)
+                () -> assertThat(actualMenuName).isEqualTo("제로콜라"),
+                () -> assertThat(actualMenuAmountValue).isEqualTo(1),
+                () -> assertThat(actualPriceValue).isZero()
         );
     }
 
     @Test
-    @DisplayName("이름으로 메뉴가 같은지 판별한다.")
-    void Given_When_Then_() {
+    @DisplayName("이름으로 메뉴가 같으면 true를 반환한다.")
+    void Given_CreateMenu_When_EqualMenuName_Then_ReturnTrue() {
         //given
         Name name = Name.from("제로콜라");
         Amount amount = Amount.from(1);
         Menu menu = Menu.of(name, amount);
 
         //when
-        Name expect = Name.from("제로콜라");
-        boolean isEqualName = menu.isEqualName(expect);
+        Name coke = Name.from("제로콜라");
+        boolean actual = menu.isEqualName(coke);
 
         //then
-        assertTrue(isEqualName);
+        assertTrue(actual);
+    }
 
+    @Test
+    @DisplayName("이름으로 메뉴가 같으면 false를 반환한다.")
+    void Given_CreateMenu_When_NotEqualMenuName_Then_ReturnFalse() {
+        //given
+        Name name = Name.from("제로콜라");
+        Amount amount = Amount.from(1);
+        Menu menu = Menu.of(name, amount);
+
+        //when
+        Name coke = Name.from("콜라");
+        boolean actual = menu.isEqualName(coke);
+
+        //then
+        assertFalse(actual);
     }
 }
