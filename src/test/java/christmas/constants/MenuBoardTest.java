@@ -58,7 +58,7 @@ class MenuBoardTest {
     @ParameterizedTest
     @MethodSource("normalOrderMenus")
     @DisplayName("주문한 메뉴의 총 가격을 계산한다.")
-    void Given_OrderMenus_When_CalculateTotalOrderPrice_Then_EqualActual(List<Menu> menus) {
+    void Given_OrderMenus_When_CalculateTotalOrderPrice_Then_EqualExpect(List<Menu> menus) {
         //given
         Menus orderMenus = Menus.from(menus);
 

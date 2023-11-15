@@ -34,10 +34,10 @@ class DaysEventCategoryTest {
         Menus orderMenus = Menus.from(menus);
 
         //when
-        Integer discount = DaysEventCategory.daysDiscount(VisitDate.from(4), orderMenus);
+        Integer actual = DaysEventCategory.daysDiscount(VisitDate.from(4), orderMenus);
 
         //then
-        assertThat(discount).isEqualTo(2023);
+        assertThat(actual).isEqualTo(2023);
     }
 
     @Test

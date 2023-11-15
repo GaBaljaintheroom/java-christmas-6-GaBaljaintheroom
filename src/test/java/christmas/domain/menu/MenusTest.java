@@ -25,26 +25,6 @@ class MenusTest {
         );
     }
 
-    private List<Menu> duplicatedMenuSources() {
-        return List.of(Menu.of(Name.from("티본스테이크"), Price.from(55_000)),
-                Menu.of(Name.from("티본스테이크"), Price.from(54_000)),
-                Menu.of(Name.from("해산물파스타"), Price.from(35_000)),
-                Menu.of(Name.from("해산물파스타"), Price.from(25_000))
-        );
-    }
-
-    private List<Menu> overOrderMenuCountSources() {
-        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
-                Menu.of(Name.from("해산물파스타"), Amount.from(25))
-        );
-    }
-
-    private List<Menu> normalOrderMenuCountSources() {
-        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
-                Menu.of(Name.from("해산물파스타"), Amount.from(10))
-        );
-    }
-
     @Test
     @DisplayName("이름이 메뉴들에 포함되어 있으면 true를 반환한다.")
     void When_IsContainMenuInMenus_Then_ReturnTrue() {
@@ -73,6 +53,14 @@ class MenusTest {
                 .hasMessageContaining(errorTage);
     }
 
+    private List<Menu> duplicatedMenuSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Price.from(55_000)),
+                Menu.of(Name.from("티본스테이크"), Price.from(54_000)),
+                Menu.of(Name.from("해산물파스타"), Price.from(35_000)),
+                Menu.of(Name.from("해산물파스타"), Price.from(25_000))
+        );
+    }
+
     @Test
     @DisplayName("정상적인 중복 없는 메뉴를 저장한다.")
     void When_InputNormalMenu_Then_NotThrowException() {
@@ -88,6 +76,12 @@ class MenusTest {
                 .hasMessageContaining(errorTage);
     }
 
+    private List<Menu> overOrderMenuCountSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
+                Menu.of(Name.from("해산물파스타"), Amount.from(25))
+        );
+    }
+
     @Test
     @DisplayName("정상적인 20가지 이하 주문을 저장한다.")
     void When_InputNormalOrderMenuCount_Then_NotThrowException() {
@@ -95,12 +89,15 @@ class MenusTest {
                 .doesNotThrowAnyException();
     }
 
+    private List<Menu> normalOrderMenuCountSources() {
+        return List.of(Menu.of(Name.from("티본스테이크"), Amount.from(10)),
+                Menu.of(Name.from("해산물파스타"), Amount.from(10))
+        );
+    }
+
     @Test
     @DisplayName("이름과 일치하는 메뉴의 가격을 반환한다.")
-    void Given_CreateMenus_When_GetPriceValueByMenuName_Then_EqualActual() {
-        //given
-        Menus menus = Menus.from(normalMenuSources());
-
+    void When_GetPriceValueByMenuName_Then_EqualExpect() {
         //when
         Integer actual = menus.getPriceValueByMenuName(Menu.of(Name.from("티본스테이크"), Amount.from(1)));
 
@@ -110,16 +107,15 @@ class MenusTest {
 
     @Test
     @DisplayName("이름과 일치하는 메뉴의 개수를 반환한다.")
-    void Given_CreateMenus_When_OrderMenus_Then_ReturnMatchCount() {
+    void Given_OrderMenus_When_MatchingOrderMenuCount_Then_EqualExpect() {
         //given
-        Menus menus = Menus.from(normalMenuSources());
         List<Menu> orderMenus = List.of(Menu.of(Name.from("티본스테이크"), Amount.from(1)));
 
         //when
-        Long matchCount = menus.matchingOrderMenuCount(Menus.from(orderMenus));
+        Long actual = menus.matchingOrderMenuCount(Menus.from(orderMenus));
 
         //then
-        assertThat(matchCount).isEqualTo(1);
+        assertThat(actual).isEqualTo(1);
     }
 
 }

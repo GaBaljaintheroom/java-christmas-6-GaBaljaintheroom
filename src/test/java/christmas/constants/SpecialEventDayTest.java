@@ -11,7 +11,7 @@ class SpecialEventDayTest {
 
     @Test
     @DisplayName("특별 이벤트 날짜에 방문을 하면 할인해준다.")
-    void Given_VisitSpecialEventDay_When_Discount_Then_Discount() {
+    void Given_VisitSpecialEventDay_When_Discount_Then_Discount1000() {
         //given
         VisitDate visitDate = VisitDate.from(3);
 
@@ -24,7 +24,7 @@ class SpecialEventDayTest {
 
     @Test
     @DisplayName("특별 이벤트 날짜에 방문을 안하면 할인을 안해준다.")
-    void Given_VisitSpecialEventDay_When_Discount_Then_Discount1000() {
+    void Given_VisitSpecialEventDay_When_Discount_Then_NoDiscount() {
         //given
         VisitDate visitDate = VisitDate.from(4);
 

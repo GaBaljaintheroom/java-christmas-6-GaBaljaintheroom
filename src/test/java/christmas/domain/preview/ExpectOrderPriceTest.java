@@ -10,7 +10,7 @@ class ExpectOrderPriceTest {
 
     @Test
     @DisplayName("예상 주문 금액을 저장할 수 있다.")
-    void Given_When_Then_() {
+    void Given_CreateExpectPaymentPrice_When_GetExpectPrice_Then_EqualExpect() {
         //given
         ExpectPaymentPrice expectPaymentPrice = ExpectPaymentPrice.from(1000);
 

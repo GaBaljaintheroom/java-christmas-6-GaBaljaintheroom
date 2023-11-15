@@ -56,7 +56,7 @@ class CategoryMenuTest {
     @ParameterizedTest
     @MethodSource("normalMenuOrders")
     @DisplayName("메뉴를 주문 했을 때 음료가 몇 개인지 반환한다.")
-    void Given_When_Then_(List<Menu> orderMenus) {
+    void Given_OrderMenus_When_GetBeverageMenuCount_Then_EqualExpect(List<Menu> orderMenus) {
         //given
         Menus menus = Menus.from(orderMenus);
 

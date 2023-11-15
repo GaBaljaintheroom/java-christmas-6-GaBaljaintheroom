@@ -10,7 +10,7 @@ class AmountTest {
 
     @Test
     @DisplayName("수량 값을 저장할 수 있다.")
-    void Given_When_Then_() {
+    void Given_CreateAmount_When_GetAmountValue_Then_EqualExpect() {
         //given
         Amount amount = Amount.from(3);
 

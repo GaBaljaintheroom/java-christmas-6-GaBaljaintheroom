@@ -28,7 +28,7 @@ class EventDetailServiceTest {
 
     @Test
     @DisplayName("크리스마스 디데이 할인 객체를 저장할 수 있다.")
-    void Given_SaveChritmasDDayDiscount_When_GetDiscount_Then_EqualActual() {
+    void Given_SaveChritmasDDayDiscount_When_GetDiscount_Then_EqualExpect() {
         //given
         orderRepository.saveVisitDate(VisitDate.from(3));
         orderRepository.saveTotalOrderPrice(TotalOrderPrice.from(120_000));
@@ -44,7 +44,7 @@ class EventDetailServiceTest {
 
     @Test
     @DisplayName("요일 할인 객체를 저장할 수 있다.")
-    void Given_SaveDaysDiscount_When_GetDiscount_Then_EqualActual() {
+    void Given_SaveDaysDiscount_When_GetDiscount_Then_EqualExpect() {
         //given
         orderRepository.saveVisitDate(VisitDate.from(3));
         orderRepository.saveTotalOrderPrice(TotalOrderPrice.from(120_000));
@@ -61,7 +61,7 @@ class EventDetailServiceTest {
 
     @Test
     @DisplayName("특별 이벤트 할인 객체를 저장할 수 있다.")
-    void Given_SaveSpecialEventDiscount_When_GetDiscount_Then_EqualActual() {
+    void Given_SaveSpecialEventDiscount_When_GetDiscount_Then_EqualExpect() {
         //given
         orderRepository.saveTotalOrderPrice(TotalOrderPrice.from(120_000));
         orderRepository.saveVisitDate(VisitDate.from(3));

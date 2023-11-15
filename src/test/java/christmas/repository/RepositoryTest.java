@@ -10,7 +10,7 @@ class RepositoryTest {
 
     @Test
     @DisplayName("도메인이 null 이면 예외가 발생한다.")
-    void When_Then_() {
+    void When_NotSaveDomainInRepository_Then_ThrowException() {
         //when
         EventDetailsRepository eventDetailsRepository = EventDetailsRepository.INSTANCE;
         OrderRepository orderRepository = OrderRepository.INSTANCE;

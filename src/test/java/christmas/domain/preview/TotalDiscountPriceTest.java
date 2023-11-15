@@ -18,7 +18,7 @@ class TotalDiscountPriceTest {
 
     @Test
     @DisplayName("총 할인 금액을 저장한다.")
-    void Given_When_Then_() {
+    void Given_CreateTotalDiscountPrice_When_GetDiscountPrice_Then_EqualExpect() {
         //given
         TotalDiscountPrice totalDiscountPrice = TotalDiscountPrice.from(christmasDDayDiscount, daysDiscount,
                 specialEventDiscount);
