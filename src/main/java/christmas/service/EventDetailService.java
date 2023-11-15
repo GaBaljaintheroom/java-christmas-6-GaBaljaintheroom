@@ -3,14 +3,14 @@ package christmas.service;
 import christmas.constants.DaysEventCategory;
 import christmas.constants.EventBadge;
 import christmas.constants.SpecialEventDay;
+import christmas.domain.VisitDate;
+import christmas.domain.menu.Menus;
 import christmas.domain.preview.ChristmasDDayDiscount;
 import christmas.domain.preview.DaysDiscount;
 import christmas.domain.preview.GiveawayMenu;
-import christmas.domain.menu.Menus;
 import christmas.domain.preview.SpecialEventDiscount;
 import christmas.domain.preview.TotalDiscountPrice;
 import christmas.domain.preview.TotalOrderPrice;
-import christmas.domain.VisitDate;
 import christmas.formatter.BenefitDetailsFormatter;
 import christmas.formatter.EventBadgeFormatter;
 import christmas.formatter.GiveawayMenuFormatter;
@@ -21,18 +21,18 @@ import christmas.repository.OrderRepository;
 public class EventDetailService {
 
     private final OrderRepository orderRepository;
-    private final EventDetailsRepository benefitDetailsRepository;
+    private final EventDetailsRepository eventDetailsRepository;
 
     public EventDetailService(final OrderRepository orderRepository,
                               final EventDetailsRepository benefitDetailsRepository) {
         this.orderRepository = orderRepository;
-        this.benefitDetailsRepository = benefitDetailsRepository;
+        this.eventDetailsRepository = benefitDetailsRepository;
     }
 
     public String showGiveawayMenuEvent() {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
         GiveawayMenu giveawayMenu = GiveawayMenu.from(totalOrderPrice.canGiveawayEvent());
-        benefitDetailsRepository.saveGiveawayMenu(giveawayMenu);
+        eventDetailsRepository.saveGiveawayMenu(giveawayMenu);
 
         return GiveawayMenuFormatter.showGiveawayMenu(giveawayMenu);
     }
@@ -42,7 +42,7 @@ public class EventDetailService {
         TotalOrderPrice totalOrderPrice = orderRepository.getTotalOrderPrice();
 
         ChristmasDDayDiscount christmasDDayDiscount = ChristmasDDayDiscount.from(totalOrderPrice, visitDate);
-        benefitDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
+        eventDetailsRepository.saveChristmasDDayDiscount(christmasDDayDiscount);
     }
 
     public void saveDaysDiscount() {
@@ -53,7 +53,7 @@ public class EventDetailService {
 
         Integer discountPrice = DaysEventCategory.daysDiscount(visitDate, orderMenus);
         DaysDiscount daysDiscount = DaysDiscount.from(totalOrderPrice, visitDate, discountPrice);
-        benefitDetailsRepository.saveDaysDiscount(daysDiscount);
+        eventDetailsRepository.saveDaysDiscount(daysDiscount);
     }
 
     public void saveSpecialEventDiscount() {
@@ -62,32 +62,32 @@ public class EventDetailService {
         VisitDate visitDate = orderRepository.getVisitDate();
         Integer discountPrice = SpecialEventDay.specialDayEventDiscount(visitDate);
         SpecialEventDiscount specialEventDiscount = SpecialEventDiscount.from(totalOrderPrice, discountPrice);
-        benefitDetailsRepository.saveSpecialEventDayDiscount(specialEventDiscount);
+        eventDetailsRepository.saveSpecialEventDayDiscount(specialEventDiscount);
     }
 
     public String showBenefitDetails() {
-        ChristmasDDayDiscount christMasDDayDiscount = benefitDetailsRepository.getChristMasDDayDiscount();
-        DaysDiscount daysDiscount = benefitDetailsRepository.getDaysDiscount();
-        SpecialEventDiscount specialEventDiscount = benefitDetailsRepository.getSpecialEventDiscount();
-        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+        ChristmasDDayDiscount christMasDDayDiscount = eventDetailsRepository.getChristMasDDayDiscount();
+        DaysDiscount daysDiscount = eventDetailsRepository.getDaysDiscount();
+        SpecialEventDiscount specialEventDiscount = eventDetailsRepository.getSpecialEventDiscount();
+        GiveawayMenu giveawayMenu = eventDetailsRepository.getGiveawayMenu();
 
         TotalDiscountPrice totalDiscountPrice = TotalDiscountPrice.from(christMasDDayDiscount,
                 daysDiscount, specialEventDiscount);
-        benefitDetailsRepository.saveTotalDiscountPrice(totalDiscountPrice);
+        eventDetailsRepository.saveTotalDiscountPrice(totalDiscountPrice);
 
         return BenefitDetailsFormatter.showBenefitDetails(christMasDDayDiscount, daysDiscount,
                 specialEventDiscount, giveawayMenu);
     }
 
     public String showTotalBenefitPrice() {
-        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+        TotalDiscountPrice totalDiscountPrice = eventDetailsRepository.getTotalDiscountPrice();
+        GiveawayMenu giveawayMenu = eventDetailsRepository.getGiveawayMenu();
         return TotalBenefitPriceFormatter.showExpectedOrderPrice(totalDiscountPrice, giveawayMenu);
     }
 
     public String showEventBadge() {
-        TotalDiscountPrice totalDiscountPrice = benefitDetailsRepository.getTotalDiscountPrice();
-        GiveawayMenu giveawayMenu = benefitDetailsRepository.getGiveawayMenu();
+        TotalDiscountPrice totalDiscountPrice = eventDetailsRepository.getTotalDiscountPrice();
+        GiveawayMenu giveawayMenu = eventDetailsRepository.getGiveawayMenu();
         String badge = EventBadge.getBadgeByTotalBenefitPrice(totalDiscountPrice, giveawayMenu);
         return EventBadgeFormatter.showEventBadge(badge);
     }
