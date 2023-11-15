@@ -46,7 +46,7 @@ class VisitDateTest {
 
     @Test
     @DisplayName("방문 날짜의 일을 구한다.")
-    void Given_When_Then_() {
+    void Given_CreateVisitDate_When_GetDayOfMonth_Then_EqualActual() {
         //given
         VisitDate visitDate = VisitDate.from(3);
 
